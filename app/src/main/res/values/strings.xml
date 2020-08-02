@@ -1,10 +1,22 @@
 <resources>
     <string name="app_name">Stockpile</string>
     <string name="app_bar_notifications">Notifications</string>
-    <string name="app_bar_app_info">App Info</string>
+    <string name="app_bar_shopping_cart">Shopping Cart</string>
     <string name="open_nav_drawer">Open</string>
     <string name="close_nav_drawer">Close</string>
     <string name="nav_drawer_chores">Errands</string>
     <string name="nav_drawer_medicines">Medicines</string>
     <string name="nav_drawer_groceries">Groceries</string>
+    <string name="main_summary_title">Product Stock Summary</string>
+    <string name="main_grocery_title">Grocery</string>
+    <string name="main_medicine_title">Medicines</string>
+    <string name="main_medicine_desc">Start tracking the medicines you take!</string>
+    <string name="main_errand_title">Errands</string>
+    <string name="main_errand_desc">Don\'t have any errands? Add here if any!</string>
+    <string name="main_grocery_desc">Start adding items to your inventory!\n2 Items running out of stock.\n3 Items need replenishment.\nAll good!!, keep it up for maintaining the stock.</string>
+    <string name="grocery_screen_title">Groceries</string>
+    <string name="medicines_screen_title">Medicines</string>
+    <string name="errands_screen_title">Errands</string>
+    <string name="settings_screen_title">Settings</string>
+    <string name="help_screen_title">Help &amp; FAQ</string>
 </resources>
