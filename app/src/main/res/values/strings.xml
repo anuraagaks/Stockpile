@@ -4,4 +4,7 @@
     <string name="app_bar_app_info">App Info</string>
     <string name="open_nav_drawer">Open</string>
     <string name="close_nav_drawer">Close</string>
+    <string name="nav_drawer_chores">Errands</string>
+    <string name="nav_drawer_medicines">Medicines</string>
+    <string name="nav_drawer_groceries">Groceries</string>
 </resources>
