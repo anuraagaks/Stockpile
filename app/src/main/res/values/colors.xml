@@ -2,10 +2,11 @@
 <resources>
     <color name="colorPrimary">#f44336</color>
     <color name="colorPrimaryDark">#aa2e25</color>
-    <color name="colorAccent">#651fff</color>
+    <color name="colorAccent">#9c27b0</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="main_bg">#F0F0F0</color>
+    <color name="white_btn_ripple">#bdbdbd</color>
+    <color name="main_bg">#fafafa</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
     <color name="icons">#FFFFFF</color>

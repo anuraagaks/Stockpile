@@ -19,4 +19,6 @@
     <string name="errands_screen_title">Errands</string>
     <string name="settings_screen_title">Settings</string>
     <string name="help_screen_title">Help &amp; FAQ</string>
+    <string name="out_of_stock_items">Out of Stock Items</string>
+    <string name="search">Search</string>
 </resources>
