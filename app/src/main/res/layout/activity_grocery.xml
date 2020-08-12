@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_activity_bg"
-    tools:context=".GroceryActivity">
+    tools:context=".activities.GroceryActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -83,6 +83,13 @@
             android:layout_marginTop="@dimen/topbar"
             android:text="Add"
             app:icon="@drawable/twotone_add_black_24dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/view_all_grocery_btn"
+            style="@style/NormalButton"
+            android:layout_marginTop="@dimen/topbar"
+            android:text="View All"
+            app:icon="@drawable/twotone_view_agenda_white_24dp" />
 
     </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout_medicine"
     android:background="@drawable/main_activity_bg"
-    tools:context=".MedicineActivity">
+    tools:context=".activities.MedicineActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"

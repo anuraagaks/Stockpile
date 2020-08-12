@@ -1,4 +1,4 @@
-package com.aks.stockpile;
+package com.aks.stockpile.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.aks.stockpile.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Locale;

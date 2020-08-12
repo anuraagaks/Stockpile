@@ -1,11 +1,13 @@
-package com.aks.stockpile;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+package com.aks.stockpile.activities;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.aks.stockpile.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

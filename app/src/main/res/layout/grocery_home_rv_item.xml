@@ -19,6 +19,52 @@
         <com.google.android.material.circularreveal.CircularRevealLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:weightSum="2.0"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/grocery_home_update"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/grocery_home_sub_cat"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="3dp"
+                android:text="Update"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1.0"
+                android:backgroundTint="@color/main_bg"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="13sp"
+                android:theme="@style/Widget.MaterialComponents.Button"
+                app:rippleColor="@color/white_btn_ripple" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/grocery_home_untrack"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/grocery_home_sub_cat"
+                android:layout_toStartOf="@id/grocery_home_update"
+                android:layout_marginEnd="3dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_weight="1.0"
+                android:backgroundTint="@color/main_bg"
+                android:text="Untrack"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="13sp"
+                android:theme="@style/Widget.MaterialComponents.Button"
+                app:rippleColor="@color/white_btn_ripple" />
+
+
+        </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+        <com.google.android.material.circularreveal.CircularRevealLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -45,46 +91,6 @@
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 android:theme="@style/Widget.MaterialComponents.TextView" />
-
-        </com.google.android.material.circularreveal.CircularRevealLinearLayout>
-
-        <com.google.android.material.circularreveal.CircularRevealLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/grocery_home_update"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/grocery_home_sub_cat"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="10dp"
-                android:backgroundTint="@color/white"
-                android:text="Update"
-                android:textAllCaps="false"
-                android:textColor="@color/colorPrimary"
-                android:textSize="13sp"
-                android:theme="@style/Widget.MaterialComponents.Button"
-                app:rippleColor="@color/white_btn_ripple" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/grocery_home_untrack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/grocery_home_sub_cat"
-                android:layout_marginStart="10dp"
-                android:layout_toStartOf="@id/grocery_home_update"
-                android:backgroundTint="@color/white"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="Untrack"
-                android:textAllCaps="false"
-                android:textColor="@color/colorPrimary"
-                android:textSize="13sp"
-                android:theme="@style/Widget.MaterialComponents.Button"
-                app:rippleColor="@color/white_btn_ripple" />
-
 
         </com.google.android.material.circularreveal.CircularRevealLinearLayout>
 

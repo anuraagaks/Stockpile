@@ -1,16 +1,21 @@
-package com.aks.stockpile;
+package com.aks.stockpile.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aks.stockpile.R;
 import com.aks.stockpile.adapters.GroceryHomeAdapter;
+import com.aks.stockpile.models.GroceryDetailsDto;
 import com.aks.stockpile.models.GroceryHomeCardDto;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.Objects;
@@ -20,17 +25,37 @@ public class GroceryActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private RecyclerView oosRecyclerView, nrpRecyclerView;
     private MaterialTextView oosTitle, nrpTitle;
+    private MaterialButton viewAllBtn, addInventoryBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setLayoutFields();
-        setButtonData();
+        setTextViewData();
         addToolbarBackButton();
         setRecyclerViewData();
+        setButtonOnClick();
     }
 
-    private void setButtonData() {
+    private void setButtonOnClick() {
+        viewAllBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent groceryViewIntent = new Intent(getApplicationContext(), GroceryListActivity.class);
+                groceryViewIntent.putParcelableArrayListExtra("data", GroceryDetailsDto.ofTestData());
+                startActivity(groceryViewIntent);
+            }
+        });
+        addInventoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addGroceryIntent = new Intent(getApplicationContext(), UpsertInventoryActivity.class);
+                startActivity(addGroceryIntent);
+            }
+        });
+    }
+
+    private void setTextViewData() {
         oosTitle.setText("Out of Stock Items");
         nrpTitle.setText("Items to be Restocked");
     }
@@ -58,6 +83,8 @@ public class GroceryActivity extends AppCompatActivity {
         nrpRecyclerView = findViewById(R.id.grocery_home_nrp_recycle);
         oosTitle = findViewById(R.id.out_of_stock_tv);
         nrpTitle = findViewById(R.id.need_replenishment_tv);
+        viewAllBtn = findViewById(R.id.view_all_grocery_btn);
+        addInventoryBtn = findViewById(R.id.add_grocery_btn);
     }
 
     private void addToolbarBackButton() {

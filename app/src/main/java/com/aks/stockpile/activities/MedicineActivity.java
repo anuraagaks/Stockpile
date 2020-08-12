@@ -1,4 +1,4 @@
-package com.aks.stockpile;
+package com.aks.stockpile.activities;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -6,6 +6,8 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.aks.stockpile.R;
 
 public class MedicineActivity extends AppCompatActivity {
 
