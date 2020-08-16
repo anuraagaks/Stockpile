@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.aks.stockpile.R;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.Objects;
@@ -18,6 +20,7 @@ import java.util.Objects;
 public class UpsertInventoryActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    MaterialButton saveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,16 @@ public class UpsertInventoryActivity extends AppCompatActivity {
         setLayoutFields();
         addToolbarBackButton();
         addDropDownData();
+        setOnClickListeners();
+    }
+
+    private void setOnClickListeners() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finishActivity("Successfully added the new item for tracking.");
+            }
+        });
     }
 
     private void addDropDownData() {
@@ -39,6 +52,7 @@ public class UpsertInventoryActivity extends AppCompatActivity {
     private void setLayoutFields() {
         setContentView(R.layout.activity_upsert_inventory);
         toolbar = findViewById(R.id.upsert_inventory_toolbar);
+        saveButton = findViewById(R.id.upsert_save_btn);
     }
 
     private void addToolbarBackButton() {
@@ -73,13 +87,17 @@ public class UpsertInventoryActivity extends AppCompatActivity {
                 .setPositiveButton("Discard", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent();
-                        intent.putExtra("message", "Successfully added the new item for tracking.");
-                        setResult(RESULT_OK, intent);
-                        finish();
+                        finishActivity("");
                     }
                 })
                 .show();
+    }
+
+    private void finishActivity(final String message) {
+        Intent intent = new Intent();
+        intent.putExtra("message", message);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
 }

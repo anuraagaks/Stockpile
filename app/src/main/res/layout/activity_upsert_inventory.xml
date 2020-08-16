@@ -34,6 +34,7 @@
         android:orientation="vertical">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/upsert_save_btn"
             style="@style/NormalButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

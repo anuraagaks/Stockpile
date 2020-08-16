@@ -8,6 +8,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,7 @@ import com.aks.stockpile.R;
 import com.aks.stockpile.adapters.GroceryHomeAdapter;
 import com.aks.stockpile.models.GroceryDetailsDto;
 import com.aks.stockpile.models.GroceryHomeCardDto;
+import com.aks.stockpile.utils.LayoutUtils;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -26,6 +28,7 @@ public class GroceryActivity extends AppCompatActivity {
     private RecyclerView oosRecyclerView, nrpRecyclerView;
     private MaterialTextView oosTitle, nrpTitle;
     private MaterialButton viewAllBtn, addInventoryBtn;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +53,23 @@ public class GroceryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent addGroceryIntent = new Intent(getApplicationContext(), UpsertInventoryActivity.class);
-                startActivity(addGroceryIntent);
+                startActivityForResult(addGroceryIntent, 112);
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 112) {
+            if (resultCode == RESULT_OK) {
+                String message = data.getStringExtra("message");
+                if (message != null && !message.equals("")) {
+                    LayoutUtils.makeSnackbar(this, drawerLayout, message)
+                            .show();
+                }
+            }
+        }
     }
 
     private void setTextViewData() {
@@ -78,6 +95,7 @@ public class GroceryActivity extends AppCompatActivity {
 
     private void setLayoutFields() {
         setContentView(R.layout.activity_grocery);
+        drawerLayout = findViewById(R.id.drawer_layout_grocery);
         toolbar = findViewById(R.id.main_toolbar_grocery);
         oosRecyclerView = findViewById(R.id.grocery_home_oos_recycle);
         nrpRecyclerView = findViewById(R.id.grocery_home_nrp_recycle);
