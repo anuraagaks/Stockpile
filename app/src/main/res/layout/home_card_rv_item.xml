@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CardView.Clickable"
+    >
+
+    <com.google.android.material.circularreveal.CircularRevealLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/home_card_image"
+            style="@style/ImageView.FullWidth"
+            android:src="@drawable/fruits"
+            />
+
+        <com.google.android.material.circularreveal.CircularRevealLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            >
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/home_card_title"
+                android:text="Groceries"
+                style="@style/TextView.TitleText"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/home_card_message"
+                android:text="3 items Out of Stock.\n2 Items need to be Restocked."
+                style="@style/TextView.SubText"
+                />
+
+        </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+    </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

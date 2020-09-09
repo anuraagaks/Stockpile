@@ -19,16 +19,30 @@ import java.util.Objects;
 
 public class UpsertInventoryActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     MaterialButton saveButton;
+    private Toolbar toolbar;
+    private Boolean isUpdateRequest;
+    private String category, name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setLayoutFields();
         addToolbarBackButton();
+        readIntentVariables();
         addDropDownData();
         setOnClickListeners();
+
+    }
+
+    private void readIntentVariables() {
+        Intent extras = getIntent();
+        isUpdateRequest = extras.getBooleanExtra("IS_UPDATE_REQUEST", false);
+        if (isUpdateRequest) {
+            category = extras.getStringExtra("UPSERT_CATEGORY");
+            name = extras.getStringExtra("UPSERT_NAME");
+        }
+
     }
 
     private void setOnClickListeners() {

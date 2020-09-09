@@ -6,15 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_activity_bg"
-    tools:context=".activities.GroceryActivity">
+    tools:context=".activities.UpsertInventoryActivity"
+    >
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/upsert_inventory_toolbar"
@@ -31,30 +34,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/topbar"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/upsert_save_btn"
-            style="@style/NormalButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:text="Save"
-            android:textAllCaps="false" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/upsert_sub_cat_dropdown_ipl"
+            style="@style/DropDownField"
+            android:hint="Category"
+            app:errorEnabled="true"
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/upsert_sub_cat_dropdown_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="@color/primary_text"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/upsert_name_dropdown_ipl"
             style="@style/DropDownField"
             android:hint="Name"
-            app:helperText="Select the Name">
+            app:errorEnabled="true"
+            >
 
-            <AutoCompleteTextView
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:id="@+id/upsert_name_dropdown_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/primary_text"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,31 +75,26 @@
             android:id="@+id/upsert_quantity_field"
             style="@style/TextInputField"
             android:hint="Quantity"
-            app:helperText="Enter the Quantity of Grocery"
-            app:suffixText=" Kgs">
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/twotone_error_white_24dp"
+            app:suffixText=" Kgs"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/primary_text"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/upsert_sub_cat_dropdown_ipl"
-            style="@style/DropDownField"
-            android:hint="Category"
-            app:helperText="Select the Category">
-
-            <AutoCompleteTextView
-                android:id="@+id/upsert_sub_cat_dropdown_field"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:textColor="@color/colorPrimary" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/upsert_save_btn"
+            style="@style/Button"
+            android:layout_width="wrap_content"
+            android:text="Save"
+            />
 
     </com.google.android.material.circularreveal.CircularRevealLinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

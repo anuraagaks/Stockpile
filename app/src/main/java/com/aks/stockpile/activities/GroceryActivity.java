@@ -4,58 +4,75 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.aks.stockpile.R;
-import com.aks.stockpile.adapters.GroceryHomeAdapter;
-import com.aks.stockpile.models.GroceryDetailsDto;
-import com.aks.stockpile.models.GroceryHomeCardDto;
+import com.aks.stockpile.adapters.GroceryFragmentAdapter;
+import com.aks.stockpile.fragments.GroceryCategoryFragment;
+import com.aks.stockpile.fragments.GroceryInventoryFragment;
+import com.aks.stockpile.fragments.OutOfStockFragment;
+import com.aks.stockpile.services.StockpileDaoService;
+import com.aks.stockpile.services.impl.StockpileDaoServiceImpl;
 import com.aks.stockpile.utils.LayoutUtils;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textview.MaterialTextView;
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
 
 public class GroceryActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private RecyclerView oosRecyclerView, nrpRecyclerView;
-    private MaterialTextView oosTitle, nrpTitle;
-    private MaterialButton viewAllBtn, addInventoryBtn;
     private DrawerLayout drawerLayout;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+
+    private GroceryCategoryFragment groceryCategoryFragment;
+    private GroceryInventoryFragment groceryInventoryFragment;
+    private OutOfStockFragment outOfStockFragment;
+
+    private StockpileDaoService daoService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initializeFields();
         setLayoutFields();
-        setTextViewData();
         addToolbarBackButton();
-        setRecyclerViewData();
-        setButtonOnClick();
+        initializeFragments();
     }
 
-    private void setButtonOnClick() {
-        viewAllBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent groceryViewIntent = new Intent(getApplicationContext(), GroceryListActivity.class);
-                groceryViewIntent.putParcelableArrayListExtra("data", GroceryDetailsDto.ofTestData());
-                startActivity(groceryViewIntent);
-            }
-        });
-        addInventoryBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent addGroceryIntent = new Intent(getApplicationContext(), UpsertInventoryActivity.class);
-                startActivityForResult(addGroceryIntent, 112);
-            }
-        });
+    private void initializeFields() {
+        groceryCategoryFragment = new GroceryCategoryFragment();
+        groceryInventoryFragment = new GroceryInventoryFragment();
+        outOfStockFragment = new OutOfStockFragment();
+        daoService = new StockpileDaoServiceImpl(this);
+    }
+
+    private void initializeFragments() {
+        tabLayout.setupWithViewPager(viewPager);
+        int oosCount = daoService.getOutOfStock().size();
+        GroceryFragmentAdapter viewPagerAdapter = new GroceryFragmentAdapter(getSupportFragmentManager(), 0);
+        viewPagerAdapter.addFragment(groceryCategoryFragment, "Categories");
+        viewPagerAdapter.addFragment(groceryInventoryFragment, "My Inventory");
+        viewPagerAdapter.addFragment(outOfStockFragment, "Out of Stock");
+
+        viewPager.setAdapter(viewPagerAdapter);
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.baseline_view_module_black_24dp);
+        tabLayout.getTabAt(1).setIcon(R.drawable.warehouse);
+        tabLayout.getTabAt(2).setIcon(R.drawable.baseline_error_black_24dp);
+
+        BadgeDrawable outOfStockBadge = tabLayout.getTabAt(2).getOrCreateBadge();
+        outOfStockBadge.setNumber(oosCount);
+        if (oosCount > 0) {
+            outOfStockBadge.setVisible(true);
+        } else {
+            outOfStockBadge.setVisible(false);
+        }
     }
 
     @Override
@@ -72,20 +89,6 @@ public class GroceryActivity extends AppCompatActivity {
         }
     }
 
-    private void setTextViewData() {
-        oosTitle.setText("Out of Stock Items");
-        nrpTitle.setText("Items to be Restocked");
-    }
-
-    private void setRecyclerViewData() {
-        GroceryHomeAdapter oosAdapter = new GroceryHomeAdapter(this, GroceryHomeCardDto.ofTest());
-        oosRecyclerView.setAdapter(oosAdapter);
-        oosRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        GroceryHomeAdapter nrpAdapter = new GroceryHomeAdapter(this, GroceryHomeCardDto.ofTest());
-        nrpRecyclerView.setAdapter(nrpAdapter);
-        nrpRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -97,12 +100,8 @@ public class GroceryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_grocery);
         drawerLayout = findViewById(R.id.drawer_layout_grocery);
         toolbar = findViewById(R.id.main_toolbar_grocery);
-        oosRecyclerView = findViewById(R.id.grocery_home_oos_recycle);
-        nrpRecyclerView = findViewById(R.id.grocery_home_nrp_recycle);
-        oosTitle = findViewById(R.id.out_of_stock_tv);
-        nrpTitle = findViewById(R.id.need_replenishment_tv);
-        viewAllBtn = findViewById(R.id.view_all_grocery_btn);
-        addInventoryBtn = findViewById(R.id.add_grocery_btn);
+        viewPager = findViewById(R.id.grocery_view_pager);
+        tabLayout = findViewById(R.id.grocery_tab_layout);
     }
 
     private void addToolbarBackButton() {

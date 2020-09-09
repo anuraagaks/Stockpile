@@ -1,117 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/Widget.MaterialComponents.CardView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    android:backgroundTint="@color/colorPrimary"
-    android:checkable="true"
-    android:clickable="true"
-    android:focusable="true"
-    android:theme="@style/Widget.MaterialComponents.CardView">
+    android:id="@+id/grocery_details_main_card"
+    style="@style/CardView.NonClickable"
+    >
 
     <com.google.android.material.circularreveal.CircularRevealLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/grocery_details_image"
+            android:layout_height="180dp"
+            style="@style/ImageView.FullWidth"
+            android:src="@drawable/grains"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/grocery_details_sub_cat"
+            android:layout_gravity="center"
+            android:text="Vegetables"
+            style="@style/TextView.SubText"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/grocery_details_name"
+            android:layout_gravity="center"
+            android:text="Tomatoes"
+            style="@style/TextView.TitleText"
+            />
 
         <com.google.android.material.circularreveal.CircularRevealLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="5dp"
-            android:paddingTop="10dp">
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:weightSum="3.0"
+            >
 
-            <com.google.android.material.circularreveal.CircularRevealLinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="2.0">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/grocery_details_add_to_cart"
+                style="@style/Button"
+                android:layout_width="0dp"
+                android:layout_weight="1.0"
+                android:text="Add to Cart"
+                />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/grocery_details_update"
-                    android:layout_gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/grocery_details_sub_cat"
-                    android:layout_alignParentStart="true"
-                    android:backgroundTint="@color/main_bg"
-                    android:text="Update"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1.0"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="13sp"
-                    android:theme="@style/Widget.MaterialComponents.Button"
-                    app:rippleColor="@color/white_btn_ripple" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/grocery_details_update"
+                style="@style/Button"
+                android:layout_width="0dp"
+                android:layout_weight="1.0"
+                android:text="Update"
+                />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/grocery_details_untrack"
-                    android:layout_gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/grocery_details_sub_cat"
-                    android:layout_toStartOf="@id/grocery_details_update"
-                    android:backgroundTint="@color/main_bg"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_weight="1.0"
-                    android:text="Untrack"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="13sp"
-                    android:theme="@style/Widget.MaterialComponents.Button"
-                    app:rippleColor="@color/white_btn_ripple" />
-
-            </com.google.android.material.circularreveal.CircularRevealLinearLayout>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/grocery_details_sub_cat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:text="Fruits &amp; Vegetables"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:theme="@style/Widget.MaterialComponents.TextView" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/grocery_details_quantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:text="Instock - 2 Kgs"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:theme="@style/Widget.MaterialComponents.TextView" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/grocery_details_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:text="Tomatoes"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:theme="@style/Widget.MaterialComponents.TextView" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/grocery_details_untrack"
+                style="@style/Button"
+                android:layout_width="0dp"
+                android:layout_weight="1.0"
+                android:text="Untrack"
+                />
 
         </com.google.android.material.circularreveal.CircularRevealLinearLayout>
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/grocery_details_image"
-            android:layout_width="140dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:scaleType="fitXY"
-            android:src="@drawable/tomatoes" />
+        <com.google.android.material.circularreveal.CircularRevealLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:weightSum="20"
+            >
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextView.SubText"
+                android:id="@+id/grocery_details_quantity_title"
+                android:layout_width="0dp"
+                android:layout_weight="8"
+                android:layout_gravity="center"
+                android:text="Total Quantity:"
+                android:textStyle="bold"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/grocery_details_quantity_value"
+                style="@style/TextView.SubText"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_gravity="center"
+                android:text="2 Kgs"
+                android:paddingStart="8dp"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/grocery_details_expand_btn"
+                style="@style/Button.Icon"
+                android:layout_width="0dp"
+                android:layout_weight="7"
+                android:layout_height="50dp"
+                app:icon="@drawable/outline_expand_more_white_18dp"
+                android:text="Splitup"
+                />
+
+        </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+        <View
+            android:id="@+id/grocery_details_divider"
+            android:visibility="gone"
+            style="@style/Divider"
+            />
+
+        <com.google.android.material.circularreveal.CircularRevealLinearLayout
+            android:id="@+id/grocery_details_expandable_layout"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            >
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/grocery_details_expandable_title"
+                style="@style/TextView.SubText"
+                android:text="Splitup:"
+                android:padding="4dp"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/grocery_details_expandable_value"
+                style="@style/TextView.SubText"
+                android:text=" -> 1 X 1Kg Units\n -> 2 X 2Kg Units\n -> 5 X 500g Units"
+                android:layout_marginLeft="20dp"
+                android:textSize="13sp"
+                android:padding="4dp"
+                />
+
+        </com.google.android.material.circularreveal.CircularRevealLinearLayout>
 
     </com.google.android.material.circularreveal.CircularRevealLinearLayout>
 

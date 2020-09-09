@@ -3,13 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/app_bar_bell_notif"
-        android:icon="@drawable/twotone_notifications_white_24dp"
-        android:title="@string/app_bar_notifications"
-        app:showAsAction="ifRoom" />
-    <item
         android:id="@+id/shopping_cart"
         android:icon="@drawable/twotone_shopping_cart_white_24dp"
         android:title="@string/app_bar_shopping_cart"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/app_bar_bell_notif"
+        android:icon="@drawable/twotone_notifications_white_24dp"
+        android:title="@string/app_bar_notifications"
         app:showAsAction="ifRoom" />
 </menu>

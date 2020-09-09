@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#9c27b0</color>
-    <color name="colorPrimaryDark">#6d1b7b</color>
-    <color name="colorAccent">#ffea00</color>
-    <color name="white">#ffffff</color>
-    <color name="black">#000000</color>
-    <color name="white_btn_ripple">#bdbdbd</color>
-    <color name="main_bg">#f3e5f5</color>
+    <color name="colorPrimary">#FF5722</color>
+    <color name="colorPrimaryDark">#E64A19</color>
+    <color name="colorAccent">#4CAF50</color>
+    <color name="white_btn_ripple">#BDBDBD</color>
+    <color name="main_bg">#EEEEEE</color>
     <color name="primary_text">#212121</color>
-    <color name="secondary_text">#727272</color>
-    <color name="icons">#FFFFFF</color>
-    <color name="divider">#B6B6B6</color>
-    <color name="text_shadow">#ffee58</color>
+    <color name="item_on_primary">#FFFFFF</color>
+    <color name="text_on_secondary">#FFFFFF</color>
+    <color name="secondary_text">#616161</color>
+    <color name="error">#b00020</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="card_bg">#FAFAFA</color>
 </resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    style="@style/CardView.Clickable"
+    >
+
+    <com.google.android.material.circularreveal.CircularRevealLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/grocery_home_image"
+            style="@style/ImageView.FixedWidth"
+            android:src="@drawable/grains"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/grocery_home_name"
+            style="@style/TextView.DescriptionText"
+            android:text="Tomatoes"
+            app:autoSizeMaxTextSize="22sp"
+            app:autoSizeMinTextSize="12sp"
+            app:autoSizeStepGranularity="2sp"
+            app:autoSizeTextType="uniform"
+            />
+
+    </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+</com.google.android.material.card.MaterialCardView>

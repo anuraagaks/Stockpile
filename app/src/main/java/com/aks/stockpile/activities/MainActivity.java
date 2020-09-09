@@ -3,12 +3,12 @@ package com.aks.stockpile.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -16,28 +16,37 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.aks.stockpile.R;
+import com.aks.stockpile.adapters.HomePageAdapter;
+import com.aks.stockpile.models.dtos.HomeCardDto;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private TextView summaryTitle, groceryTitleText, groceryText, medicineTitleText, medicineText, errandsText, errandsTitleText;
-    private Locale locale;
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkForFirstLaunch();
         setLayoutFields();
         navDrawerOptions();
-        initializeSharedPrefValues();
-        setText();
-        onClickListenersForTexts();
+        initializeRecyclerView();
+    }
+
+    private void checkForFirstLaunch() {
+        SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        boolean isFirstLaunch = preferences.getBoolean("IS_FIRST_LAUNCH", true);
+        if (isFirstLaunch) {
+            Intent initIntent = new Intent(this, InitializerActivity.class);
+            startActivity(initIntent);
+        }
     }
 
     private void navDrawerOptions() {
@@ -61,7 +70,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.round_menu_open_black_36dp);
+        final Drawable navIcon = getResources().getDrawable(R.drawable.round_menu_open_black_36dp, getTheme());
+        navIcon.setColorFilter(getResources().getColor(R.color.item_on_primary, getTheme()), PorterDuff.Mode.SRC_ATOP);
+        actionBar.setHomeAsUpIndicator(navIcon);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         Menu navMenu = navigationView.getMenu();
         this.addMenuItems(navMenu);
@@ -106,73 +117,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.main_toolbar);
-        summaryTitle = findViewById(R.id.home_summary_tv);
-        groceryTitleText = findViewById(R.id.grocery_summary_title_tv);
-        groceryText = findViewById(R.id.grocery_summary_tv);
-        medicineTitleText = findViewById(R.id.medicine_summary_title_tv);
-        medicineText = findViewById(R.id.medicine_summary_tv);
-        errandsTitleText = findViewById(R.id.errands_summary_title_tv);
-        errandsText = findViewById(R.id.errands_summary_tv);
+        recyclerView = findViewById(R.id.home_recycle);
     }
 
-    private void onClickListenersForTexts() {
-        final Intent groceryIntent = new Intent(getApplicationContext(), GroceryActivity.class);
-        final Intent medicineIntent = new Intent(getApplicationContext(), MedicineActivity.class);
-        final Intent errandsIntent = new Intent(getApplicationContext(), ErrandsActivity.class);
-
-        groceryTitleText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(groceryIntent);
-            }
-        });
-        groceryText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(groceryIntent);
-            }
-        });
-        medicineTitleText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(medicineIntent);
-            }
-        });
-        medicineText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(medicineIntent);
-            }
-        });
-        errandsTitleText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(errandsIntent);
-            }
-        });
-        errandsText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(errandsIntent);
-            }
-
-        });
-
-    }
-
-    private void initializeSharedPrefValues() {
-        SharedPreferences prefs = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
-        locale = Locale.forLanguageTag(prefs.getString("locale", "en"));
-    }
-
-    private void setText() {
-        summaryTitle.setText(R.string.main_summary_title);
-        groceryTitleText.setText(R.string.main_grocery_title);
-        groceryText.setText(R.string.main_grocery_desc);
-        medicineTitleText.setText(R.string.main_medicine_title);
-        medicineText.setText(R.string.main_medicine_desc);
-        errandsTitleText.setText(R.string.main_errand_title);
-        errandsText.setText(R.string.main_errand_desc);
+    private void initializeRecyclerView() {
+        HomePageAdapter homePageAdapter = new HomePageAdapter(this, HomeCardDto.ofTest());
+        recyclerView.setAdapter(homePageAdapter);
+        int orientationValue = getResources().getConfiguration().orientation;
+        if (orientationValue == 1) {
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        }
+        if (orientationValue == 2) {
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        }
     }
 
     @Override

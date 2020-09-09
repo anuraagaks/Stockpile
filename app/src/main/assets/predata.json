@@ -1,0 +1,1737 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "entityType": "GROCERY",
+      "name": "fruits",
+      "quantityType": "WEIGHT_KG",
+      "displayName": "Fruits",
+      "imageResource": 2131165306
+    },
+    {
+      "id": 2,
+      "entityType": "GROCERY",
+      "name": "vegetables",
+      "quantityType": "WEIGHT_KG",
+      "displayName": "Vegetables",
+      "imageResource": 2131165390
+    },
+    {
+      "id": 3,
+      "entityType": "GROCERY",
+      "name": "grains",
+      "quantityType": "WEIGHT_KG",
+      "displayName": "Grains & Cereals",
+      "imageResource": 2131165307
+    },
+    {
+      "id": 4,
+      "entityType": "GROCERY",
+      "name": "spices",
+      "quantityType": "WEIGHT_KG",
+      "displayName": "Spices",
+      "imageResource": 2131165365
+    },
+    {
+      "id": 5,
+      "entityType": "GROCERY",
+      "name": "dairy",
+      "quantityType": "WEIGHT_L",
+      "displayName": "Dairy",
+      "imageResource": 2131165296
+    },
+    {
+      "id": 6,
+      "entityType": "GROCERY",
+      "name": "bakery",
+      "quantityType": "UNITS",
+      "displayName": "Bakery Products",
+      "imageResource": 2131165279
+    },
+    {
+      "id": 7,
+      "entityType": "GROCERY",
+      "name": "oils",
+      "quantityType": "WEIGHT_L",
+      "displayName": "Oils",
+      "imageResource": 2131165354
+    },
+    {
+      "id": 8,
+      "entityType": "GROCERY",
+      "name": "beverages",
+      "quantityType": "WEIGHT_KG",
+      "displayName": "Beverages",
+      "imageResource": 2131165285
+    },
+    {
+      "id": 9,
+      "entityType": "GROCERY",
+      "name": "biscuits_and_cookies",
+      "quantityType": "UNITS",
+      "displayName": "Biscuits & Cookies",
+      "imageResource": 2131165295
+    },
+    {
+      "id": 10,
+      "entityType": "GROCERY",
+      "name": "health_and_personal_care",
+      "quantityType": "UNITS",
+      "displayName": "Health & Personal Care",
+      "imageResource": 2131165359
+    },
+    {
+      "id": 11,
+      "entityType": "GROCERY",
+      "name": "dry_fruits",
+      "quantityType": "WEIGHT_KG",
+      "displayName": "Dry Fruits",
+      "imageResource": 2131165303
+    },
+    {
+      "id": 12,
+      "entityType": "GROCERY",
+      "name": "cleaners",
+      "quantityType": "WEIGHT_L",
+      "displayName": "Cleaners",
+      "imageResource": 2131165294
+    },
+    {
+      "id": 13,
+      "entityType": "GROCERY",
+      "name": "packed_food",
+      "quantityType": "WEIGHT_KG",
+      "displayName": "Packed Food & Snacks",
+      "imageResource": 2131165364
+    },
+    {
+      "id": 14,
+      "entityType": "GROCERY",
+      "name": "non_veg",
+      "quantityType": "WEIGHT_KG",
+      "displayName": "Non-Veg",
+      "imageResource": 2131165328
+    },
+    {
+      "id": 15,
+      "entityType": "GROCERY",
+      "name": "stationary",
+      "quantityType": "UNITS",
+      "displayName": "Office & Stationary",
+      "imageResource": 2131165367
+    },
+    {
+      "id": 16,
+      "entityType": "GROCERY",
+      "name": "others",
+      "quantityType": "UNITS",
+      "displayName": "Others",
+      "imageResource": 2131165355
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "name": "Apple",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 2,
+      "name": "Apricots",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 3,
+      "name": "Avocado",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 4,
+      "name": "Banana",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 5,
+      "name": "Berries",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 6,
+      "name": "Cherries",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 7,
+      "name": "Coconut",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 8,
+      "name": "Custard-Apple",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 9,
+      "name": "Figs",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 10,
+      "name": "Grapes",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 11,
+      "name": "Guava",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 12,
+      "name": "Jackfruit",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 13,
+      "name": "Plum",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 14,
+      "name": "Kiwifruit",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 15,
+      "name": "Lemon",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 16,
+      "name": "Mango",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 17,
+      "name": "Raw Mango",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 18,
+      "name": "Mosambi",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 19,
+      "name": "Melon",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 20,
+      "name": "Musk Melon",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 21,
+      "name": "Olives",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 22,
+      "name": "Orange",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 23,
+      "name": "Papaya",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 24,
+      "name": "Peaches",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 25,
+      "name": "Pear",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 26,
+      "name": "Dragonfruit",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 27,
+      "name": "Pineapple",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 28,
+      "name": "Plums",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 29,
+      "name": "Pomegranate",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 30,
+      "name": "Raspberries",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 31,
+      "name": "Sapota",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 32,
+      "name": "Sweet Lime",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 33,
+      "name": "Strawberries",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 34,
+      "name": "Sugar-Apple",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 35,
+      "name": "Sugarcane",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 36,
+      "name": "Watermelon",
+      "categoryId": 1,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 37,
+      "name": "Amaranth",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 38,
+      "name": "Colocasia Leaves",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 39,
+      "name": "Coriander Leaves",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 40,
+      "name": "Curry Leaves",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 41,
+      "name": "Dill",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 42,
+      "name": "Drumstick Leaves",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 43,
+      "name": "Fenugreek Leaves",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 44,
+      "name": "Lettuce Leaves",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 45,
+      "name": "Mint",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 46,
+      "name": "Mustard Seeds Leaves",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 47,
+      "name": "Spinach",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 48,
+      "name": "Turmeric Leaves",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 49,
+      "name": "Banana Flower",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 50,
+      "name": "Broccoli",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 51,
+      "name": "Cabbage",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 52,
+      "name": "Cauliflower",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 53,
+      "name": "Bitter Gourd",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 54,
+      "name": "Bottle Gourd",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 55,
+      "name": "Brinjal",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 56,
+      "name": "Broad Beans",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 57,
+      "name": "Capsicum",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 58,
+      "name": "Cluster Beans",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 59,
+      "name": "Corn",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 60,
+      "name": "Cucumber",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 61,
+      "name": "Drumstick",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 62,
+      "name": "French Beans",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 63,
+      "name": "Green Chilies",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 64,
+      "name": "Green Peas",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 65,
+      "name": "Indian Gooseberry (Amla)",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 66,
+      "name": "Indian Squash",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 67,
+      "name": "Jackfruit",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 68,
+      "name": "Lemon",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 69,
+      "name": "Lady Finger (Okra)",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 70,
+      "name": "Papaya (Raw)",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 71,
+      "name": "Pointed Gourd",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 72,
+      "name": "Pumpkin",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 73,
+      "name": "Raw Banana",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 74,
+      "name": "Red Chili",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 75,
+      "name": "Ridge Gourd",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 76,
+      "name": "Snake Gourd",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 77,
+      "name": "Spiny Gourd",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 78,
+      "name": "Tomato",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 79,
+      "name": "Waterchestnut",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 80,
+      "name": "Kohlrabi",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 81,
+      "name": "Lotus Stem",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 82,
+      "name": "Banana Stem",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 83,
+      "name": "Beetroot",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 84,
+      "name": "Carrots",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 85,
+      "name": "Colocasia Roots",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 86,
+      "name": "Garlic",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 87,
+      "name": "Ginger",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 88,
+      "name": "Onion",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 89,
+      "name": "Potato",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 90,
+      "name": "Purple Yam",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 91,
+      "name": "Radish",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 92,
+      "name": "Sweet Potatoes",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 93,
+      "name": "Turmeric",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 94,
+      "name": "Turnip",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 95,
+      "name": "Yam",
+      "categoryId": 2,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 96,
+      "name": "Amaranth grain",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 97,
+      "name": "Barley",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 98,
+      "name": "Broken wheat",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 99,
+      "name": "Barnyard Millet",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 100,
+      "name": "Finger Millet",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 101,
+      "name": "Foxtail Millet",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 102,
+      "name": "Kodo Millet",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 103,
+      "name": "Little Millet",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 104,
+      "name": "Pearl Millet",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 105,
+      "name": "Sorghum Millet",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 106,
+      "name": "Rice",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 107,
+      "name": "Beaten Rice(Flakes)",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 108,
+      "name": "Boiled Rice",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 109,
+      "name": "Puffed Rice",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 110,
+      "name": "Semolina",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 111,
+      "name": "Tapioca",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 112,
+      "name": "Wheat",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 113,
+      "name": "Amaranth flour",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 114,
+      "name": "All purpose flour",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 115,
+      "name": "Arrowroot flour",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 116,
+      "name": "Bengal gram flour",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 117,
+      "name": "Buckwheat flour",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 118,
+      "name": "Finger millet flour",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 119,
+      "name": "Maize flour",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 120,
+      "name": "Pearl millet flour",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 121,
+      "name": "Rice flour",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 122,
+      "name": "Water chestnut flour",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 123,
+      "name": "White millet flour",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 124,
+      "name": "Whole wheat flour",
+      "categoryId": 3,
+      "thresholdPercentage": 35,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 125,
+      "name": "Asafoetida",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 126,
+      "name": "Bay Leaf (dried)",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 127,
+      "name": "Black Peppercorns",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 128,
+      "name": "Black Salt",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 129,
+      "name": "Pink Salt",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 130,
+      "name": "Black Cumin",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 131,
+      "name": "Jeera",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 132,
+      "name": "Cardamom",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 133,
+      "name": "Carom seeds/Thymol/Celery seeds",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 134,
+      "name": "Chili Powder",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 135,
+      "name": "Cinnamon",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 136,
+      "name": "Cloves",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 137,
+      "name": "Coriander/Cilantro seeds",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 138,
+      "name": "Cumin",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 139,
+      "name": "Curry Leaves",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 140,
+      "name": "Dry Mango Powder",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 141,
+      "name": "Fennel",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 142,
+      "name": "Dried Fenugreek Leaves",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 143,
+      "name": "Fenugreek seeds",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 144,
+      "name": "Flax Seed",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 145,
+      "name": "Garlic Powder",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 146,
+      "name": "Ginger Powder",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 147,
+      "name": "Pepper",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 148,
+      "name": "Mace",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 149,
+      "name": "Mustard Seeds",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 150,
+      "name": "Nutmeg",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 151,
+      "name": "Pomegranate seeds",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 152,
+      "name": "Poppy seeds",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 153,
+      "name": "Rock Salt",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 154,
+      "name": "Dried rose petals",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 155,
+      "name": "Saffron",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 156,
+      "name": "Sesame seeds",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 157,
+      "name": "Star Anise",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 158,
+      "name": "Tailed Pepper",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 159,
+      "name": "Tamarind",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 160,
+      "name": "Turmeric powder",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 161,
+      "name": "Wild Celery Seeds",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 162,
+      "name": "Holy Basil",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 163,
+      "name": "Chenopodium Album",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 164,
+      "name": "Coriander Leaves",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 165,
+      "name": "Fenugreek",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 166,
+      "name": "Indian Gooseberry (Amla)",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 167,
+      "name": "Lemon Grass",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 168,
+      "name": "Mint (fresh)",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 169,
+      "name": "Oregano (fresh & dried)",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 170,
+      "name": "Turmeric",
+      "categoryId": 4,
+      "thresholdPercentage": 30,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 171,
+      "name": "Milk",
+      "categoryId": 5,
+      "thresholdPercentage": 40,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 172,
+      "name": "Cream",
+      "categoryId": 5,
+      "thresholdPercentage": 40,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 173,
+      "name": "Milk Powder",
+      "categoryId": 5,
+      "thresholdPercentage": 40,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 174,
+      "name": "Cheese",
+      "categoryId": 5,
+      "thresholdPercentage": 40,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 175,
+      "name": "Cottage Cheese(Paneer)",
+      "categoryId": 5,
+      "thresholdPercentage": 40,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 176,
+      "name": "Butter",
+      "categoryId": 5,
+      "thresholdPercentage": 40,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 177,
+      "name": "Yogurt",
+      "categoryId": 5,
+      "thresholdPercentage": 40,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 178,
+      "name": "Ice Cream",
+      "categoryId": 5,
+      "thresholdPercentage": 40,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 179,
+      "name": "Bread",
+      "categoryId": 6,
+      "thresholdPercentage": 15,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 180,
+      "name": "Bun",
+      "categoryId": 6,
+      "thresholdPercentage": 15,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 181,
+      "name": "Rusk",
+      "categoryId": 6,
+      "thresholdPercentage": 15,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 182,
+      "name": "Sunflower Oil",
+      "categoryId": 7,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 183,
+      "name": "Vegetable Oil",
+      "categoryId": 7,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 184,
+      "name": "Rice Bran Oil",
+      "categoryId": 7,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 185,
+      "name": "Groundnut Oil",
+      "categoryId": 7,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 186,
+      "name": "Sesame Oil",
+      "categoryId": 7,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 187,
+      "name": "Edible Coconut Oil",
+      "categoryId": 7,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 188,
+      "name": "Coconut Oil",
+      "categoryId": 7,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 189,
+      "name": "Olive Oil",
+      "categoryId": 7,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 190,
+      "name": "Coffee Powder",
+      "categoryId": 8,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 191,
+      "name": "Tea bag",
+      "categoryId": 8,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 192,
+      "name": "Tea Powder",
+      "categoryId": 8,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 193,
+      "name": "Green Tea Powder",
+      "categoryId": 8,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 194,
+      "name": "Flavoured Milk Powder",
+      "categoryId": 8,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 195,
+      "name": "Juice",
+      "categoryId": 8,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 196,
+      "name": "Milkshake",
+      "categoryId": 8,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 197,
+      "name": "Soda",
+      "categoryId": 8,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_L"
+    },
+    {
+      "id": 198,
+      "name": "Almond",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 199,
+      "name": "Anise/Fennel",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 200,
+      "name": "Betel",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 201,
+      "name": "Cashew Nut",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 202,
+      "name": "Raisin",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 203,
+      "name": "Dates",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 204,
+      "name": "Dry Dates",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 205,
+      "name": "Groundnuts/Peanuts",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 206,
+      "name": "Walnuts",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 207,
+      "name": "Pistachio",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 208,
+      "name": "Pumpkin Seeds",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 209,
+      "name": "Saffron",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 210,
+      "name": "Sesame Seeds",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 211,
+      "name": "Sugar candy",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 212,
+      "name": "Watermelon Seeds",
+      "categoryId": 11,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 213,
+      "name": "Disinfectent",
+      "categoryId": 12,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 214,
+      "name": "Surface Cleaner",
+      "categoryId": 12,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 215,
+      "name": "Toilet Cleaner",
+      "categoryId": 12,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 216,
+      "name": "Bathroom Cleaner",
+      "categoryId": 12,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 217,
+      "name": "Soap",
+      "categoryId": 12,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 218,
+      "name": "Handwash",
+      "categoryId": 12,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 219,
+      "name": "Sanitizer",
+      "categoryId": 12,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 220,
+      "name": "Detergent",
+      "categoryId": 12,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 221,
+      "name": "Detergent Cake",
+      "categoryId": 12,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 222,
+      "name": "Dishwasher",
+      "categoryId": 12,
+      "thresholdPercentage": 20,
+      "quantityType": "WEIGHT_KG"
+    },
+    {
+      "id": 223,
+      "name": "Pens",
+      "categoryId": 15,
+      "thresholdPercentage": 10,
+      "quantityType": "UNITS"
+    },
+    {
+      "id": 224,
+      "name": "Pencil",
+      "categoryId": 15,
+      "thresholdPercentage": 10,
+      "quantityType": "UNITS"
+    },
+    {
+      "id": 225,
+      "name": "Eraser",
+      "categoryId": 15,
+      "thresholdPercentage": 10,
+      "quantityType": "UNITS"
+    },
+    {
+      "id": 226,
+      "name": "Sharpner",
+      "categoryId": 15,
+      "thresholdPercentage": 10,
+      "quantityType": "UNITS"
+    },
+    {
+      "id": 227,
+      "name": "Scale",
+      "categoryId": 15,
+      "thresholdPercentage": 10,
+      "quantityType": "UNITS"
+    },
+    {
+      "id": 228,
+      "name": "Stapler/Staples",
+      "categoryId": 15,
+      "thresholdPercentage": 10,
+      "quantityType": "UNITS"
+    },
+    {
+      "id": 229,
+      "name": "Files",
+      "categoryId": 15,
+      "thresholdPercentage": 10,
+      "quantityType": "UNITS"
+    }
+  ]
+}

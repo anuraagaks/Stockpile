@@ -21,4 +21,11 @@
     <string name="help_screen_title">Help &amp; FAQ</string>
     <string name="out_of_stock_items">Out of Stock Items</string>
     <string name="search">Search</string>
+    <string name="sort_by">Sort By</string>
+    <string name="cancel">Cancel</string>
+    <string name="sort">Sort</string>
+    <string name="clear">Clear</string>
+    <string name="confirm_untrack">Are you sure?</string>
+    <string name="positive_untrack">Yes</string>
+    <string name="negetive_untrack">No</string>
 </resources>
