@@ -69,7 +69,7 @@
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0.5dp</item>
-        <item name="android:background">@color/secondary_text</item>
+        <item name="android:background">@color/divider</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
     </style>
@@ -136,29 +136,35 @@
     <style name="DropDownField" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">15dp</item>
-        <item name="android:layout_margin">10dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
         <item name="helperTextEnabled">true</item>
         <item name="boxStrokeColor">@color/colorAccent</item>
         <item name="errorIconTint">@color/error</item>
         <item name="errorTextColor">@color/error</item>
         <item name="boxStrokeErrorColor">@color/error</item>
-        <item name="android:textColorHint">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/primary_text</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
         <item name="boxStrokeWidthFocused">3dp</item>
     </style>
 
     <style name="TextInputField" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">10dp</item>
-        <item name="android:padding">15dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
         <item name="endIconMode">clear_text</item>
         <item name="helperTextEnabled">true</item>
         <item name="boxStrokeColor">@color/colorAccent</item>
         <item name="errorIconTint">@color/error</item>
         <item name="errorTextColor">@color/error</item>
         <item name="boxStrokeErrorColor">@color/error</item>
-        <item name="android:textColorHint">@color/colorPrimary</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/primary_text</item>
         <item name="boxStrokeWidthFocused">3dp</item>
     </style>
 

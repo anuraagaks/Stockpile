@@ -13,27 +13,38 @@
         android:orientation="vertical"
         >
 
-        <com.google.android.material.circularreveal.CircularRevealLinearLayout
-            android:layout_width="wrap_content"
+        <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="end"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_margin="10dp"
             >
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/grocery_inventory_add_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="start"
+                android:text="Add"
+                android:textAllCaps="false"
+                app:icon="@drawable/twotone_add_black_24dp"
+                android:textSize="12sp"
+                app:iconSize="30dp"
+                />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/grocery_inventory_sort_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/baseline_filter_alt_white_18dp"
+                android:layout_alignParentEnd="true"
                 android:text="Sort"
                 android:textAllCaps="false"
                 android:textSize="12sp"
+                app:icon="@drawable/baseline_filter_alt_white_18dp"
                 app:iconSize="30dp"
                 />
 
-        </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+        </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/grocery_inventory_recycle"

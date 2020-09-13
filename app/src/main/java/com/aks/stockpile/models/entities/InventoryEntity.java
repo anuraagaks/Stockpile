@@ -29,5 +29,12 @@ public class InventoryEntity {
 
     private Double quantity;
 
+    private String brand;
+
+    private String brandModel;
+
+    @ColumnInfo(name = "grocery_source")
+    private String grocerySource;
+
 
 }

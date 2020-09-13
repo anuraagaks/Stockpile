@@ -38,6 +38,10 @@ public interface StockpileDao {
     List<AggregatedInventory> getInventoryByCategoryId(Integer categoryId);
 
     @Transaction
+    @Query("SELECT * FROM article WHERE category_id = :categoryId")
+    List<ArticleEntity> getArticleByCategoryId(Integer categoryId);
+
+    @Transaction
     @Query("SELECT * FROM inventory")
     List<AggregatedInventory> findAllInventory();
 

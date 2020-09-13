@@ -68,7 +68,7 @@ public class GroceryCategoryActivity extends AppCompatActivity {
     }
 
     private void addToolbarBackButton() {
-        toolbar.setTitle(categoryEntity.getDisplayName());
+        toolbar.setTitle(categoryEntity.getName());
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

@@ -1,6 +1,7 @@
 package com.aks.stockpile.fragments;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aks.stockpile.R;
+import com.aks.stockpile.activities.UpsertInventoryActivity;
 import com.aks.stockpile.adapters.GroceryDetailsAdapter;
 import com.aks.stockpile.models.dtos.GroceryDetailsDto;
 import com.aks.stockpile.models.enums.SortOption;
@@ -21,10 +23,12 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.List;
 
+import static com.aks.stockpile.constants.IntentExtrasConstants.GROCERY_UPSERT_IS_UPDATE;
+
 public class GroceryInventoryFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private MaterialButton sort;
+    private MaterialButton sort, add;
     private StockpileDaoService daoService;
 
     @Override
@@ -35,6 +39,7 @@ public class GroceryInventoryFragment extends Fragment {
     private void setLayoutFields() {
         recyclerView = getView().findViewById(R.id.grocery_inventory_recycle);
         sort = getView().findViewById(R.id.grocery_inventory_sort_btn);
+        add = getView().findViewById(R.id.grocery_inventory_add_btn);
         daoService = new StockpileDaoServiceImpl(getContext());
     }
 
@@ -80,6 +85,14 @@ public class GroceryInventoryFragment extends Fragment {
                         .setCancelable(false)
                         .show();
 
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent upsertIntent = new Intent(getContext(), UpsertInventoryActivity.class);
+                upsertIntent.putExtra(GROCERY_UPSERT_IS_UPDATE, false);
+                startActivity(upsertIntent);
             }
         });
     }

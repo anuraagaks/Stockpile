@@ -3,129 +3,113 @@
     {
       "id": 1,
       "entityType": "GROCERY",
-      "name": "fruits",
+      "name": "Fruits",
       "quantityType": "WEIGHT_KG",
-      "displayName": "Fruits",
       "imageResource": 2131165306
     },
     {
       "id": 2,
       "entityType": "GROCERY",
-      "name": "vegetables",
+      "name": "Vegetables",
       "quantityType": "WEIGHT_KG",
-      "displayName": "Vegetables",
       "imageResource": 2131165390
     },
     {
       "id": 3,
       "entityType": "GROCERY",
-      "name": "grains",
+      "name": "Grains & Cereals",
       "quantityType": "WEIGHT_KG",
-      "displayName": "Grains & Cereals",
       "imageResource": 2131165307
     },
     {
       "id": 4,
       "entityType": "GROCERY",
-      "name": "spices",
+      "name": "Spices",
       "quantityType": "WEIGHT_KG",
-      "displayName": "Spices",
       "imageResource": 2131165365
     },
     {
       "id": 5,
       "entityType": "GROCERY",
-      "name": "dairy",
+      "name": "Dairy",
       "quantityType": "WEIGHT_L",
-      "displayName": "Dairy",
       "imageResource": 2131165296
     },
     {
       "id": 6,
       "entityType": "GROCERY",
-      "name": "bakery",
+      "name": "Bakery Products",
       "quantityType": "UNITS",
-      "displayName": "Bakery Products",
       "imageResource": 2131165279
     },
     {
       "id": 7,
       "entityType": "GROCERY",
-      "name": "oils",
+      "name": "Oils",
       "quantityType": "WEIGHT_L",
-      "displayName": "Oils",
       "imageResource": 2131165354
     },
     {
       "id": 8,
       "entityType": "GROCERY",
-      "name": "beverages",
+      "name": "Beverages",
       "quantityType": "WEIGHT_KG",
-      "displayName": "Beverages",
       "imageResource": 2131165285
     },
     {
       "id": 9,
       "entityType": "GROCERY",
-      "name": "biscuits_and_cookies",
+      "name": "Biscuits & Cookies",
       "quantityType": "UNITS",
-      "displayName": "Biscuits & Cookies",
       "imageResource": 2131165295
     },
     {
       "id": 10,
       "entityType": "GROCERY",
-      "name": "health_and_personal_care",
+      "name": "Health & Personal Care",
       "quantityType": "UNITS",
-      "displayName": "Health & Personal Care",
       "imageResource": 2131165359
     },
     {
       "id": 11,
       "entityType": "GROCERY",
-      "name": "dry_fruits",
+      "name": "Dry Fruits",
       "quantityType": "WEIGHT_KG",
-      "displayName": "Dry Fruits",
       "imageResource": 2131165303
     },
     {
       "id": 12,
       "entityType": "GROCERY",
-      "name": "cleaners",
+      "name": "Cleaners",
       "quantityType": "WEIGHT_L",
-      "displayName": "Cleaners",
       "imageResource": 2131165294
     },
     {
       "id": 13,
       "entityType": "GROCERY",
-      "name": "packed_food",
+      "name": "Packed Food & Snacks",
       "quantityType": "WEIGHT_KG",
-      "displayName": "Packed Food & Snacks",
       "imageResource": 2131165364
     },
     {
       "id": 14,
       "entityType": "GROCERY",
-      "name": "non_veg",
+      "name": "Non-Veg",
       "quantityType": "WEIGHT_KG",
-      "displayName": "Non-Veg",
       "imageResource": 2131165328
     },
     {
       "id": 15,
       "entityType": "GROCERY",
-      "name": "stationary",
+      "name": "Office & Stationary",
       "quantityType": "UNITS",
-      "displayName": "Office & Stationary",
       "imageResource": 2131165367
     },
     {
       "id": 16,
       "entityType": "GROCERY",
-      "name": "others",
+      "name": "Others",
       "quantityType": "UNITS",
-      "displayName": "Others",
       "imageResource": 2131165355
     }
   ],

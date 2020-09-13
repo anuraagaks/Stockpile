@@ -9,11 +9,13 @@ import com.aks.stockpile.models.enums.QuantityType;
 import java.util.List;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-public class GroceryDetailsDto implements Parcelable {
+public class GroceryDetailsDto extends CardDto implements Parcelable {
 
     public static final Creator<GroceryDetailsDto> CREATOR = new Creator<GroceryDetailsDto>() {
         @Override
@@ -26,11 +28,8 @@ public class GroceryDetailsDto implements Parcelable {
             return new GroceryDetailsDto[size];
         }
     };
-    private Integer id;
-    private String name;
     private String quantityType;
     private Double quantityValue;
-    private Integer imageResourceId;
     private String category;
     private List<QuantitySplitUp> quantitySplitUps;
 
@@ -58,7 +57,7 @@ public class GroceryDetailsDto implements Parcelable {
     public static GroceryDetailsDto of(AggregatedInventory entity) {
         GroceryDetailsDto dto = new GroceryDetailsDto();
         dto.setId(entity.getInventory().getId());
-        dto.setCategory(entity.getCategory().getDisplayName());
+        dto.setCategory(entity.getCategory().getName());
         dto.setName(entity.getArticle().getName());
         QuantityType quantityType = entity.getArticle().getQuantityType();
         if (quantityType == null) {

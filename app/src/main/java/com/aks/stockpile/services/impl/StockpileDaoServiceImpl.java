@@ -8,11 +8,15 @@ import com.aks.stockpile.models.PreDataDto;
 import com.aks.stockpile.models.dtos.AggregatedInventory;
 import com.aks.stockpile.models.dtos.GroceryCategoryCardDto;
 import com.aks.stockpile.models.dtos.GroceryDetailsDto;
+import com.aks.stockpile.models.entities.AbstractEntity;
+import com.aks.stockpile.models.entities.ArticleEntity;
 import com.aks.stockpile.models.entities.CategoryEntity;
 import com.aks.stockpile.services.StockpileDaoService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class StockpileDaoServiceImpl implements StockpileDaoService {
 
@@ -44,6 +48,11 @@ public class StockpileDaoServiceImpl implements StockpileDaoService {
     }
 
     @Override
+    public List<ArticleEntity> getArticlesByCategory(Integer categoryId) {
+        return dao.getArticleByCategoryId(categoryId);
+    }
+
+    @Override
     public List<GroceryDetailsDto> getInventoryByCategory(Integer categoryId) {
         List<AggregatedInventory> entities = dao.getInventoryByCategoryId(categoryId);
         return mapToDto(entities);
@@ -59,6 +68,29 @@ public class StockpileDaoServiceImpl implements StockpileDaoService {
     public List<GroceryDetailsDto> getOutOfStock() {
         List<AggregatedInventory> entities = dao.getOutOfStockInventory();
         return mapToDto(entities);
+    }
+
+    @Override
+    public Map<String, CategoryEntity> getCategoriesForDropdown() {
+        return buildAbstractModel(dao.findAllCategories());
+    }
+
+    @Override
+    public Map<String, ArticleEntity> getArticlesForDropdown(Integer categoryId) {
+        return buildAbstractModel(dao.getArticleByCategoryId(categoryId));
+    }
+
+    @Override
+    public AggregatedInventory getInventoryById(Integer inventoryId) {
+        return dao.getInventoryById(inventoryId);
+    }
+
+    private <T extends AbstractEntity> Map<String, T> buildAbstractModel(List<T> entities) {
+        Map<String, T> map = new HashMap<>();
+        for (T entity : entities) {
+            map.put(entity.getName(), entity);
+        }
+        return map;
     }
 
     private List<GroceryDetailsDto> mapToDto(List<AggregatedInventory> entities) {

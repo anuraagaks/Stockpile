@@ -7,8 +7,6 @@ public class QuantitySplitUp {
 
     private String type;
 
-    private String displayValue;
-
     private Double value;
 
 }

@@ -38,8 +38,8 @@ public class GroceryCategoryAdapter extends RecyclerView.Adapter<GroceryCategory
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        holder.name.setText(data.get(position).getDisplayName());
-        holder.image.setImageResource(data.get(position).getImageResource());
+        holder.name.setText(data.get(position).getName());
+        holder.image.setImageResource(data.get(position).getImageResourceId());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

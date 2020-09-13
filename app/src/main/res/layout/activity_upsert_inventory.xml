@@ -5,7 +5,7 @@
     android:id="@+id/upsert_drawer_layout_grocery"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_activity_bg"
+    android:background="@color/item_on_primary"
     tools:context=".activities.UpsertInventoryActivity"
     >
 
@@ -25,76 +25,182 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:title="Track A New Grocery"
-                app:titleTextAppearance="@style/ToolbarTitleText" />
+                app:titleTextAppearance="@style/ToolbarTitleText"
+                />
 
         </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <com.google.android.material.circularreveal.CircularRevealLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/topbar"
+                android:layout_marginBottom="60dp"
+                android:orientation="vertical"
+                >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/upsert_name_dropdown_ipl"
+                    style="@style/DropDownField"
+                    android:hint="Name *"
+                    app:errorEnabled="true"
+                    >
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/upsert_name_dropdown_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/main_bg"
+                        android:inputType="text"
+                        android:textColor="@color/primary_text"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/upsert_cat_dropdown_ipl"
+                    style="@style/DropDownField"
+                    android:hint="Category *"
+                    app:errorEnabled="true"
+                    >
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/upsert_cat_dropdown_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/main_bg"
+                        android:inputType="text"
+                        android:textColor="@color/primary_text"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.circularreveal.CircularRevealLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="5"
+                    >
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/upsert_quantity_field"
+                        style="@style/TextInputField"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:hint="Quantity *"
+                        app:errorEnabled="true"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/main_bg"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/primary_text"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/upsert_quantity_dropdown_ipl"
+                        style="@style/DropDownField"
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:hint="Quantity Type *"
+                        app:errorEnabled="true"
+                        >
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/upsert_quantity_dropdown_field"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/main_bg"
+                            android:inputType="none"
+                            android:textColor="@color/primary_text"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/upsert_brand_ipl"
+                    style="@style/TextInputField"
+                    android:hint="Brand name"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/twotone_error_white_24dp"
+                    app:helperText="(Optional)"
+                    app:helperTextEnabled="true"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/upsert_brand_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/main_bg"
+                        android:inputType="text"
+                        android:textColor="@color/primary_text"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/upsert_brand_model_ipl"
+                    style="@style/TextInputField"
+                    android:hint="Item name"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/twotone_error_white_24dp"
+                    app:helperText="(Optional)"
+                    app:helperTextEnabled="true"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/upsert_brand_model_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/main_bg"
+                        android:inputType="text"
+                        android:textColor="@color/primary_text"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/upsert_source_dropdown_ipl"
+                    style="@style/DropDownField"
+                    android:hint="Source"
+                    app:errorEnabled="true"
+                    app:helperText="(Optional) Source of purchase. Enter value if not found"
+                    app:helperTextEnabled="true"
+                    >
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/upsert_source_dropdown_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/main_bg"
+                        android:inputType="text"
+                        android:textColor="@color/primary_text"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/upsert_save_btn"
+                    style="@style/Button"
+                    android:layout_width="wrap_content"
+                    android:text="Save"
+                    android:textSize="15sp"
+                    />
+
+            </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <com.google.android.material.circularreveal.CircularRevealLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/topbar"
-        android:orientation="vertical"
-        >
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/upsert_sub_cat_dropdown_ipl"
-            style="@style/DropDownField"
-            android:hint="Category"
-            app:errorEnabled="true"
-            >
-
-            <AutoCompleteTextView
-                android:id="@+id/upsert_sub_cat_dropdown_field"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:textColor="@color/primary_text"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/upsert_name_dropdown_ipl"
-            style="@style/DropDownField"
-            android:hint="Name"
-            app:errorEnabled="true"
-            >
-
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/upsert_name_dropdown_field"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:textColor="@color/primary_text"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/upsert_quantity_field"
-            style="@style/TextInputField"
-            android:hint="Quantity"
-            app:errorEnabled="true"
-            app:errorIconDrawable="@drawable/twotone_error_white_24dp"
-            app:suffixText=" Kgs"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:textColor="@color/primary_text"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/upsert_save_btn"
-            style="@style/Button"
-            android:layout_width="wrap_content"
-            android:text="Save"
-            />
-
-    </com.google.android.material.circularreveal.CircularRevealLinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

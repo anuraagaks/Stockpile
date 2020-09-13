@@ -26,6 +26,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.util.List;
 import java.util.Locale;
 
+import static com.aks.stockpile.constants.IntentExtrasConstants.GROCERY_INVENTORY_ID;
+import static com.aks.stockpile.constants.IntentExtrasConstants.GROCERY_UPSERT_IS_UPDATE;
+
 public class GroceryDetailsAdapter extends RecyclerView.Adapter<GroceryDetailsAdapter.ViewHolder> {
 
     private Context mContext;
@@ -44,7 +47,7 @@ public class GroceryDetailsAdapter extends RecyclerView.Adapter<GroceryDetailsAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.name.setText(data.get(position).getName());
         holder.subCategory.setText(data.get(position).getCategory());
         holder.quantity.setText(String.format("%s %s", data.get(position).getQuantityValue(), data.get(position).getQuantityType()));
@@ -91,7 +94,8 @@ public class GroceryDetailsAdapter extends RecyclerView.Adapter<GroceryDetailsAd
             @Override
             public void onClick(View view) {
                 Intent upsertIntent = new Intent(mContext, UpsertInventoryActivity.class);
-                upsertIntent.putExtra("IS_UPDATE_REQUEST", false);
+                upsertIntent.putExtra(GROCERY_UPSERT_IS_UPDATE, true);
+                upsertIntent.putExtra(GROCERY_INVENTORY_ID, data.get(position).getId());
                 mContext.startActivity(upsertIntent);
             }
         });

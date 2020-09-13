@@ -2,18 +2,12 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "f6d6b9df477335550c43448d203d1b5b",
+    "identityHash": "301318c5dd28bc4901498687481e37b8",
     "entities": [
       {
         "tableName": "category",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `entity_type` TEXT, `quantity_type` TEXT, `name` TEXT, `display_name` TEXT, `image_resource` INTEGER, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`entity_type` TEXT, `quantity_type` TEXT, `image_resource` INTEGER, `id` INTEGER, `name` TEXT, PRIMARY KEY(`id`))",
         "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": false
-          },
           {
             "fieldPath": "entityType",
             "columnName": "entity_type",
@@ -27,21 +21,21 @@
             "notNull": false
           },
           {
-            "fieldPath": "name",
-            "columnName": "name",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "displayName",
-            "columnName": "display_name",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
             "fieldPath": "imageResource",
             "columnName": "image_resource",
             "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
             "notNull": false
           }
         ],
@@ -56,20 +50,8 @@
       },
       {
         "tableName": "article",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `name` TEXT, `category_id` INTEGER, `threshold_percentage` REAL, `quantity_type` TEXT, PRIMARY KEY(`id`), FOREIGN KEY(`category_id`) REFERENCES `category`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`category_id` INTEGER, `threshold_percentage` REAL, `quantity_type` TEXT, `id` INTEGER, `name` TEXT, PRIMARY KEY(`id`), FOREIGN KEY(`category_id`) REFERENCES `category`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": false
-          },
-          {
-            "fieldPath": "name",
-            "columnName": "name",
-            "affinity": "TEXT",
-            "notNull": false
-          },
           {
             "fieldPath": "categoryId",
             "columnName": "category_id",
@@ -85,6 +67,18 @@
           {
             "fieldPath": "quantityType",
             "columnName": "quantity_type",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
             "affinity": "TEXT",
             "notNull": false
           }
@@ -129,7 +123,7 @@
       },
       {
         "tableName": "inventory",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `article_id` INTEGER, `category_id` INTEGER, `split_up` TEXT, `quantity` REAL, FOREIGN KEY(`article_id`) REFERENCES `article`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`category_id`) REFERENCES `category`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `article_id` INTEGER, `category_id` INTEGER, `split_up` TEXT, `quantity` REAL, `brand` TEXT, `brandModel` TEXT, `grocery_source` TEXT, FOREIGN KEY(`article_id`) REFERENCES `article`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`category_id`) REFERENCES `category`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -159,6 +153,24 @@
             "fieldPath": "quantity",
             "columnName": "quantity",
             "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "brand",
+            "columnName": "brand",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "brandModel",
+            "columnName": "brandModel",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "grocerySource",
+            "columnName": "grocery_source",
+            "affinity": "TEXT",
             "notNull": false
           }
         ],
@@ -198,7 +210,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f6d6b9df477335550c43448d203d1b5b')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '301318c5dd28bc4901498687481e37b8')"
     ]
   }
 }
