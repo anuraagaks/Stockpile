@@ -4,6 +4,7 @@ import com.aks.stockpile.models.PreDataDto;
 import com.aks.stockpile.models.dtos.AggregatedInventory;
 import com.aks.stockpile.models.dtos.GroceryCategoryCardDto;
 import com.aks.stockpile.models.dtos.GroceryDetailsDto;
+import com.aks.stockpile.models.dtos.InventoryDto;
 import com.aks.stockpile.models.entities.ArticleEntity;
 import com.aks.stockpile.models.entities.CategoryEntity;
 
@@ -20,6 +21,8 @@ public interface StockpileDaoService {
 
     List<ArticleEntity> getArticlesByCategory(Integer categoryId);
 
+    void deleteInventory(Integer inventoryId);
+
     List<GroceryDetailsDto> getInventoryByCategory(Integer categoryId);
 
     List<GroceryDetailsDto> getAllInventory();
@@ -31,4 +34,10 @@ public interface StockpileDaoService {
     Map<String, ArticleEntity> getArticlesForDropdown(Integer categoryId);
 
     AggregatedInventory getInventoryById(Integer inventoryId);
+
+    void saveInventory(InventoryDto dto);
+
+    void updateInventory(InventoryDto dto);
+
+    Integer getInventoryIdByCategoryAndArticle(Integer categoryId, String name);
 }

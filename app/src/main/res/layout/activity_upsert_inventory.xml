@@ -24,7 +24,6 @@
                 style="@style/TopbarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="Track A New Grocery"
                 app:titleTextAppearance="@style/ToolbarTitleText"
                 />
 
@@ -44,24 +43,6 @@
                 >
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/upsert_name_dropdown_ipl"
-                    style="@style/DropDownField"
-                    android:hint="Name *"
-                    app:errorEnabled="true"
-                    >
-
-                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                        android:id="@+id/upsert_name_dropdown_field"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/main_bg"
-                        android:inputType="text"
-                        android:textColor="@color/primary_text"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/upsert_cat_dropdown_ipl"
                     style="@style/DropDownField"
                     android:hint="Category *"
@@ -79,31 +60,30 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/upsert_name_dropdown_ipl"
+                    style="@style/DropDownField"
+                    android:hint="Name *"
+                    app:errorEnabled="true"
+                    >
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/upsert_name_dropdown_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/main_bg"
+                        android:inputType="text"
+                        android:textColor="@color/primary_text"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <com.google.android.material.circularreveal.CircularRevealLinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="5"
                     >
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/upsert_quantity_field"
-                        style="@style/TextInputField"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:hint="Quantity *"
-                        app:errorEnabled="true"
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/main_bg"
-                            android:inputType="numberDecimal"
-                            android:textColor="@color/primary_text"
-                            />
-
-                    </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/upsert_quantity_dropdown_ipl"
@@ -125,45 +105,41 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/upsert_quantity_ipl"
+                        style="@style/TextInputField"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:hint="Quantity *"
+                        app:errorEnabled="true"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/upsert_quantity_field"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/main_bg"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/primary_text"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
                 </com.google.android.material.circularreveal.CircularRevealLinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/upsert_brand_ipl"
+                    android:id="@+id/upsert_price_ipl"
                     style="@style/TextInputField"
-                    android:hint="Brand name"
+                    android:hint="Price *"
                     app:errorEnabled="true"
-                    app:errorIconDrawable="@drawable/twotone_error_white_24dp"
-                    app:helperText="(Optional)"
-                    app:helperTextEnabled="true"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/upsert_brand_field"
+                        android:id="@+id/upsert_price_field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/main_bg"
-                        android:inputType="text"
-                        android:textColor="@color/primary_text"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/upsert_brand_model_ipl"
-                    style="@style/TextInputField"
-                    android:hint="Item name"
-                    app:errorEnabled="true"
-                    app:errorIconDrawable="@drawable/twotone_error_white_24dp"
-                    app:helperText="(Optional)"
-                    app:helperTextEnabled="true"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/upsert_brand_model_field"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/main_bg"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textColor="@color/primary_text"
                         />
 
@@ -172,14 +148,35 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/upsert_source_dropdown_ipl"
                     style="@style/DropDownField"
-                    android:hint="Source"
+                    android:hint="Source *"
                     app:errorEnabled="true"
-                    app:helperText="(Optional) Source of purchase. Enter value if not found"
+                    app:helperText="Source of purchase. Enter value if not found"
                     app:helperTextEnabled="true"
                     >
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/upsert_source_dropdown_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/main_bg"
+                        android:inputType="text"
+                        android:textColor="@color/primary_text"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/upsert_description_ipl"
+                    style="@style/TextInputField"
+                    android:hint="Description"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/error"
+                    app:helperText="(Optional)"
+                    app:helperTextEnabled="true"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/upsert_description_field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/main_bg"

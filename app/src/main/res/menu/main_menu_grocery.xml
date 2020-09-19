@@ -4,13 +4,15 @@
 
     <item
         android:id="@+id/shopping_cart"
-        android:icon="@drawable/twotone_shopping_cart_white_24dp"
+        android:icon="@drawable/shopping_bag"
+        android:iconTint="@color/item_on_primary"
         android:title="@string/app_bar_shopping_cart"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/search"
-        android:icon="@drawable/twotone_search_white_24dp"
+        android:icon="@drawable/search"
+        android:iconTint="@color/item_on_primary"
         android:title="@string/search"
         app:showAsAction="ifRoom" />
 </menu>

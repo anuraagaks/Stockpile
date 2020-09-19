@@ -9,14 +9,11 @@ import lombok.EqualsAndHashCode;
 @Data
 public class GroceryCategoryCardDto extends CardDto {
 
-    private String categoryName;
-
     public static GroceryCategoryCardDto of(CategoryEntity entity) {
         GroceryCategoryCardDto dto = new GroceryCategoryCardDto();
         dto.setId(entity.getId());
         dto.setImageResourceId(entity.getImageResource());
         dto.setName(entity.getName());
-        dto.setCategoryName(entity.getName());
         return dto;
     }
 

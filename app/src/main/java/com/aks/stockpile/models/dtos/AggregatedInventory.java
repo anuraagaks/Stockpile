@@ -15,7 +15,7 @@ public class AggregatedInventory {
     @Embedded
     private InventoryEntity inventory;
 
-    @Relation(parentColumn = "article_id", entityColumn = "id")
+    @Relation(parentColumn = "category_id", entityColumn = "id")
     private CategoryEntity category;
 
     @Relation(parentColumn = "article_id", entityColumn = "id")

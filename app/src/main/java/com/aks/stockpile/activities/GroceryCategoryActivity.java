@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aks.stockpile.R;
 import com.aks.stockpile.adapters.GroceryDetailsAdapter;
+import com.aks.stockpile.helpers.RecycleViewHelper;
 import com.aks.stockpile.models.dtos.GroceryDetailsDto;
 import com.aks.stockpile.models.entities.CategoryEntity;
 import com.aks.stockpile.services.StockpileDaoService;
@@ -20,7 +21,7 @@ import java.util.List;
 
 import static com.aks.stockpile.constants.IntentExtrasConstants.GROCERY_CATEGORY_ACTIVITY_CATEGORY;
 
-public class GroceryCategoryActivity extends AppCompatActivity {
+public class GroceryCategoryActivity extends AppCompatActivity implements RecycleViewHelper {
 
     private Toolbar toolbar;
     private Integer categoryId;
@@ -44,7 +45,7 @@ public class GroceryCategoryActivity extends AppCompatActivity {
 
     private void initializeRecyclerView() {
         List<GroceryDetailsDto> data = daoService.getInventoryByCategory(categoryId);
-        GroceryDetailsAdapter groceryDetailsAdapter = new GroceryDetailsAdapter(this, data);
+        GroceryDetailsAdapter groceryDetailsAdapter = new GroceryDetailsAdapter(this, data, daoService);
         recyclerView.setAdapter(groceryDetailsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -81,5 +82,10 @@ public class GroceryCategoryActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void refreshRecycleViewData() {
+        initializeRecyclerView();
     }
 }

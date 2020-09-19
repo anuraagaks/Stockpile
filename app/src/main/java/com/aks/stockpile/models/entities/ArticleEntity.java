@@ -8,8 +8,10 @@ import androidx.room.Index;
 import com.aks.stockpile.models.enums.QuantityType;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString
 @Entity(tableName = "article", indices = {@Index("name"), @Index("category_id")},

@@ -12,12 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aks.stockpile.R;
+import com.aks.stockpile.activities.GroceryActivity;
 import com.aks.stockpile.activities.UpsertInventoryActivity;
 import com.aks.stockpile.adapters.GroceryDetailsAdapter;
 import com.aks.stockpile.models.dtos.GroceryDetailsDto;
 import com.aks.stockpile.models.enums.SortOption;
-import com.aks.stockpile.services.StockpileDaoService;
-import com.aks.stockpile.services.impl.StockpileDaoServiceImpl;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -29,7 +28,6 @@ public class GroceryInventoryFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private MaterialButton sort, add;
-    private StockpileDaoService daoService;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,6 @@ public class GroceryInventoryFragment extends Fragment {
         recyclerView = getView().findViewById(R.id.grocery_inventory_recycle);
         sort = getView().findViewById(R.id.grocery_inventory_sort_btn);
         add = getView().findViewById(R.id.grocery_inventory_add_btn);
-        daoService = new StockpileDaoServiceImpl(getContext());
     }
 
     @Override
@@ -92,14 +89,14 @@ public class GroceryInventoryFragment extends Fragment {
             public void onClick(View view) {
                 Intent upsertIntent = new Intent(getContext(), UpsertInventoryActivity.class);
                 upsertIntent.putExtra(GROCERY_UPSERT_IS_UPDATE, false);
-                startActivity(upsertIntent);
+                getActivity().startActivityForResult(upsertIntent, 112);
             }
         });
     }
 
-    private void initializeRecyclerView() {
-        List<GroceryDetailsDto> data = daoService.getAllInventory();
-        GroceryDetailsAdapter groceryDetailsAdapter = new GroceryDetailsAdapter(getContext(), data);
+    public void initializeRecyclerView() {
+        List<GroceryDetailsDto> data = ((GroceryActivity) getActivity()).daoService.getAllInventory();
+        GroceryDetailsAdapter groceryDetailsAdapter = new GroceryDetailsAdapter(getContext(), data, ((GroceryActivity) getActivity()).daoService);
         recyclerView.setAdapter(groceryDetailsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }

@@ -11,22 +11,20 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aks.stockpile.R;
+import com.aks.stockpile.activities.GroceryActivity;
 import com.aks.stockpile.activities.UpsertInventoryActivity;
 import com.aks.stockpile.adapters.GroceryCategoryAdapter;
+import com.aks.stockpile.helpers.RecycleViewHelper;
 import com.aks.stockpile.models.dtos.GroceryCategoryCardDto;
-import com.aks.stockpile.services.StockpileDaoService;
-import com.aks.stockpile.services.impl.StockpileDaoServiceImpl;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
 import static com.aks.stockpile.constants.IntentExtrasConstants.GROCERY_UPSERT_IS_UPDATE;
 
-public class GroceryCategoryFragment extends Fragment {
+public class GroceryCategoryFragment extends Fragment implements RecycleViewHelper {
 
     private RecyclerView recyclerView;
-
-    private StockpileDaoService daoService;
     private MaterialButton add;
 
     public GroceryCategoryFragment() {
@@ -40,11 +38,10 @@ public class GroceryCategoryFragment extends Fragment {
     private void setLayoutFields() {
         recyclerView = getView().findViewById(R.id.grocery_category_recycle);
         add = getView().findViewById(R.id.grocery_category_add_btn);
-        daoService = new StockpileDaoServiceImpl(getContext());
     }
 
     private void initializeRecyclerView() {
-        List<GroceryCategoryCardDto> data = daoService.getAllCategories();
+        List<GroceryCategoryCardDto> data = ((GroceryActivity) getActivity()).daoService.getAllCategories();
         GroceryCategoryAdapter homePageAdapter = new GroceryCategoryAdapter(getContext(), data);
         recyclerView.setAdapter(homePageAdapter);
         int orientationValue = getResources().getConfiguration().orientation;
@@ -75,8 +72,13 @@ public class GroceryCategoryFragment extends Fragment {
             public void onClick(View view) {
                 Intent upsertIntent = new Intent(getContext(), UpsertInventoryActivity.class);
                 upsertIntent.putExtra(GROCERY_UPSERT_IS_UPDATE, false);
-                startActivity(upsertIntent);
+                getActivity().startActivityForResult(upsertIntent, 112);
             }
         });
+    }
+
+    @Override
+    public void refreshRecycleViewData() {
+        initializeRecyclerView();
     }
 }

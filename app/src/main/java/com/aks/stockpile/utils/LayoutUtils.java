@@ -12,8 +12,8 @@ public final class LayoutUtils {
 
     public static Snackbar makeSnackbar(Context context, View view, String message) {
         return Snackbar.make(view, message, Snackbar.LENGTH_LONG)
-                .setBackgroundTint(ContextCompat.getColor(context, R.color.colorPrimary))
-                .setTextColor(ContextCompat.getColor(context, R.color.primary_text));
+                .setBackgroundTint(ContextCompat.getColor(context, R.color.colorAccent))
+                .setTextColor(ContextCompat.getColor(context, R.color.item_on_primary));
     }
 
 }

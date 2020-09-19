@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "301318c5dd28bc4901498687481e37b8",
+    "identityHash": "974d911f7ec1d337d87ca96a95d76a8a",
     "entities": [
       {
         "tableName": "category",
@@ -123,7 +123,7 @@
       },
       {
         "tableName": "inventory",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `article_id` INTEGER, `category_id` INTEGER, `split_up` TEXT, `quantity` REAL, `brand` TEXT, `brandModel` TEXT, `grocery_source` TEXT, FOREIGN KEY(`article_id`) REFERENCES `article`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`category_id`) REFERENCES `category`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `article_id` INTEGER, `category_id` INTEGER, `name` TEXT, `history` TEXT, `quantity` REAL, `description` TEXT, FOREIGN KEY(`article_id`) REFERENCES `article`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`category_id`) REFERENCES `category`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -144,8 +144,14 @@
             "notNull": false
           },
           {
-            "fieldPath": "splitUp",
-            "columnName": "split_up",
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "history",
+            "columnName": "history",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -156,20 +162,8 @@
             "notNull": false
           },
           {
-            "fieldPath": "brand",
-            "columnName": "brand",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "brandModel",
-            "columnName": "brandModel",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "grocerySource",
-            "columnName": "grocery_source",
+            "fieldPath": "description",
+            "columnName": "description",
             "affinity": "TEXT",
             "notNull": false
           }
@@ -180,7 +174,17 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_inventory_article_id_category_id",
+            "unique": true,
+            "columnNames": [
+              "article_id",
+              "category_id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_inventory_article_id_category_id` ON `${TABLE_NAME}` (`article_id`, `category_id`)"
+          }
+        ],
         "foreignKeys": [
           {
             "table": "article",
@@ -210,7 +214,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '301318c5dd28bc4901498687481e37b8')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '974d911f7ec1d337d87ca96a95d76a8a')"
     ]
   }
 }

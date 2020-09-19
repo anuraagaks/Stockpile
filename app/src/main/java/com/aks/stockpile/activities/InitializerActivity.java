@@ -35,6 +35,7 @@ public class InitializerActivity extends AppCompatActivity {
 
     private void updateFirstLaunchAndExit() {
         SharedPreferences.Editor editor = getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit();
+        editor.putString("CURRENCY_SYMBOL", "₹");
         editor.putBoolean("IS_FIRST_LAUNCH", false);
         editor.apply();
         finish();

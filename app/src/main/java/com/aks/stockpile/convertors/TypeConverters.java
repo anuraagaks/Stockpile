@@ -2,7 +2,7 @@ package com.aks.stockpile.convertors;
 
 import androidx.room.TypeConverter;
 
-import com.aks.stockpile.models.entities.QuantitySplitUp;
+import com.aks.stockpile.models.entities.InventoryHistory;
 import com.aks.stockpile.models.enums.EntityType;
 import com.aks.stockpile.models.enums.QuantityType;
 import com.google.gson.Gson;
@@ -34,13 +34,13 @@ public final class TypeConverters {
     }
 
     @TypeConverter
-    public static String convertQuantitySplitUp(List<QuantitySplitUp> quantitySplitUps) {
-        return new Gson().toJson(quantitySplitUps);
+    public static String convertQuantitySplitUp(List<InventoryHistory> histories) {
+        return new Gson().toJson(histories);
     }
 
     @TypeConverter
-    public static List<QuantitySplitUp> convertQuantitySplitUp(String quantityType) {
-        Type listType = new TypeToken<List<QuantitySplitUp>>() {
+    public static List<InventoryHistory> convertQuantitySplitUp(String quantityType) {
+        Type listType = new TypeToken<List<InventoryHistory>>() {
         }.getType();
         return new Gson().fromJson(quantityType, listType);
     }

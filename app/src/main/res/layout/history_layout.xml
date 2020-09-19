@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.circularreveal.CircularRevealRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    >
+
+    <View
+        android:id="@+id/history_view"
+        android:layout_width="15dp"
+        android:layout_height="1dp"
+        />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/history_icon"
+        style="@style/ImageView.FixedWidth"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toEndOf="@id/history_view"
+        android:layout_weight="4"
+        android:src="@drawable/add_inventroy"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/history_text"
+        style="@style/TextView.DescriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:padding="0dp"
+        android:layout_toEndOf="@id/history_icon"
+        android:textSize="15sp"
+        android:text="Sample One"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/history_timestamp"
+        style="@style/TextView.SubText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/history_text"
+        android:textSize="12sp"
+        android:paddingStart="5dp"
+        android:layout_toEndOf="@id/history_icon"
+        android:text="Sample Text"
+        android:layout_marginBottom="20dp"
+        />
+
+</com.google.android.material.circularreveal.CircularRevealRelativeLayout>

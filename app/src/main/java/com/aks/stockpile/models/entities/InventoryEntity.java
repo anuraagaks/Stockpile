@@ -3,6 +3,7 @@ package com.aks.stockpile.models.entities;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-@Entity(tableName = "inventory",
+@Entity(tableName = "inventory", indices = @Index(value = {"article_id", "category_id"}, unique = true),
         foreignKeys = {@ForeignKey(entity = ArticleEntity.class, parentColumns = "id", childColumns = "article_id"),
                 @ForeignKey(entity = CategoryEntity.class, parentColumns = "id", childColumns = "category_id")})
 public class InventoryEntity {
@@ -24,17 +25,13 @@ public class InventoryEntity {
     @ColumnInfo(name = "category_id")
     private Integer categoryId;
 
-    @ColumnInfo(name = "split_up")
-    private List<QuantitySplitUp> splitUp;
+    private String name;
+
+    @ColumnInfo(name = "history")
+    private List<InventoryHistory> history;
 
     private Double quantity;
 
-    private String brand;
-
-    private String brandModel;
-
-    @ColumnInfo(name = "grocery_source")
-    private String grocerySource;
-
+    private String description;
 
 }

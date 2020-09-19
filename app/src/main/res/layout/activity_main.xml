@@ -18,9 +18,10 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/main_toolbar"
-                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                style="@style/TopbarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                app:titleTextColor="@color/item_on_primary"
                 app:menu="@menu/main_menu"
                 app:title="@string/app_name"
                 />

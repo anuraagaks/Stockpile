@@ -1,7 +1,6 @@
 package com.aks.stockpile.dao;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -50,11 +49,15 @@ public interface StockpileDao {
     List<AggregatedInventory> findOOSInventory();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Long saveInventory(InventoryEntity entity);
+    void saveInventory(InventoryEntity entity);
 
-    @Delete
-    void deleteInventory(InventoryEntity entity);
+    @Query("DELETE FROM inventory WHERE id = :id")
+    void deleteInventory(Integer id);
 
     @Query("SELECT * FROM inventory WHERE quantity <= 0")
+    @Transaction
     List<AggregatedInventory> getOutOfStockInventory();
+
+    @Query("SELECT * FROM inventory WHERE category_id = :categoryId AND name = :name")
+    InventoryEntity getInventoryByCategoryAndName(Integer categoryId, String name);
 }

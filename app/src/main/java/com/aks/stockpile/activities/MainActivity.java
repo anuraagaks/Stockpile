@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main_menu, menu);
+        menu.getItem(0).getIcon().setColorFilter(getResources().getColor(R.color.item_on_primary, getTheme()), PorterDuff.Mode.SRC_ATOP);
+        menu.getItem(1).getIcon().setColorFilter(getResources().getColor(R.color.item_on_primary, getTheme()), PorterDuff.Mode.SRC_ATOP);
         return true;
     }
 
@@ -79,22 +81,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void addMenuItems(Menu menu) {
-        SubMenu groceriesMenu = menu.addSubMenu("Groceries");
-        groceriesMenu.add("View Groceries").setIcon(R.drawable.ic_grocery);
-        groceriesMenu.add("Out of Stock Items").setIcon(R.drawable.twotone_error_white_24dp);
-        groceriesMenu.add("Add new Grocery Item").setIcon(R.drawable.twotone_add_circle_white_24dp);
-        groceriesMenu.add("Update Inventory").setIcon(R.drawable.twotone_edit_white_24dp);
-        SubMenu medicinesMenu = menu.addSubMenu("Medicines");
-        medicinesMenu.add("View Medicines").setIcon(R.drawable.ic_medicines);
-        medicinesMenu.add("Add new Medicine").setIcon(R.drawable.twotone_medical_services_white_24dp);
-        medicinesMenu.add("Update Inventory").setIcon(R.drawable.twotone_edit_white_24dp);
-        medicinesMenu.add("Schedule Reminder").setIcon(R.drawable.twotone_alarm_add_white_24dp);
-        SubMenu errandsMenu = menu.addSubMenu("Errands");
-        errandsMenu.add("View Errands").setIcon(R.drawable.ic_errands);
-        errandsMenu.add("Add new Errand").setIcon(R.drawable.twotone_add_circle_white_24dp);
-        errandsMenu.add("Mark Errand as Done").setIcon(R.drawable.twotone_done_all_white_24dp);
         SubMenu settingsMenu = menu.addSubMenu("Support");
-        settingsMenu.add("Settings").setIcon(R.drawable.twotone_settings_white_24dp).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        settingsMenu.add("Settings").setIcon(R.drawable.settings).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 final Intent settingsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
@@ -102,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
             }
         });
-        settingsMenu.add("Help & FAQ").setIcon(R.drawable.twotone_help_center_white_24dp).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        settingsMenu.add("Help & FAQ").setIcon(R.drawable.help).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 final Intent helpIntent = new Intent(getApplicationContext(), HelpActivity.class);
@@ -141,10 +129,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
-
-//    private void setSpinnerAdapter(String[] locales) {
-//        Spinner localeDropdown = findViewById(R.id.locale_dropdown);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, locales);
-//        localeDropdown.setAdapter(adapter);
-//    }
 }
