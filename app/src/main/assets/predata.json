@@ -57,13 +57,6 @@
       "imageResource": 2131165285
     },
     {
-      "id": 9,
-      "entityType": "GROCERY",
-      "name": "Biscuits & Cookies",
-      "quantityType": "UNITS",
-      "imageResource": 2131165295
-    },
-    {
       "id": 10,
       "entityType": "GROCERY",
       "name": "Health & Personal Care",
@@ -88,7 +81,7 @@
       "id": 13,
       "entityType": "GROCERY",
       "name": "Packed Food & Snacks",
-      "quantityType": "WEIGHT_KG",
+      "quantityType": "UNITS",
       "imageResource": 2131165364
     },
     {
@@ -161,7 +154,7 @@
       "name": "Coconut",
       "categoryId": 1,
       "thresholdPercentage": 20,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
     },
     {
       "id": 8,
@@ -1365,21 +1358,28 @@
       "name": "Bread",
       "categoryId": 6,
       "thresholdPercentage": 15,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
     },
     {
       "id": 180,
       "name": "Bun",
       "categoryId": 6,
       "thresholdPercentage": 15,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
     },
     {
       "id": 181,
       "name": "Rusk",
       "categoryId": 6,
       "thresholdPercentage": 15,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
+    },
+    {
+      "id": 230,
+      "name": "Ghee",
+      "categoryId": 7,
+      "thresholdPercentage": 25,
+      "quantityType": "WEIGHT_L"
     },
     {
       "id": 182,
@@ -1449,7 +1449,7 @@
       "name": "Tea bag",
       "categoryId": 8,
       "thresholdPercentage": 20,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
     },
     {
       "id": 192,
@@ -1603,49 +1603,49 @@
       "name": "Disinfectent",
       "categoryId": 12,
       "thresholdPercentage": 20,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
     },
     {
       "id": 214,
       "name": "Surface Cleaner",
       "categoryId": 12,
       "thresholdPercentage": 20,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
     },
     {
       "id": 215,
       "name": "Toilet Cleaner",
       "categoryId": 12,
       "thresholdPercentage": 20,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
     },
     {
       "id": 216,
       "name": "Bathroom Cleaner",
       "categoryId": 12,
       "thresholdPercentage": 20,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
     },
     {
       "id": 217,
       "name": "Soap",
       "categoryId": 12,
       "thresholdPercentage": 20,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
     },
     {
       "id": 218,
       "name": "Handwash",
       "categoryId": 12,
       "thresholdPercentage": 20,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
     },
     {
       "id": 219,
       "name": "Sanitizer",
       "categoryId": 12,
       "thresholdPercentage": 20,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
     },
     {
       "id": 220,
@@ -1666,7 +1666,7 @@
       "name": "Dishwasher",
       "categoryId": 12,
       "thresholdPercentage": 20,
-      "quantityType": "WEIGHT_KG"
+      "quantityType": "UNITS"
     },
     {
       "id": 223,

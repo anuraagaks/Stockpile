@@ -13,30 +13,29 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.aks.stockpile.R;
 import com.aks.stockpile.adapters.GroceryFragmentAdapter;
+import com.aks.stockpile.fragments.ExpenditureFragment;
 import com.aks.stockpile.fragments.GroceryCategoryFragment;
 import com.aks.stockpile.fragments.GroceryInventoryFragment;
 import com.aks.stockpile.fragments.OutOfStockFragment;
-import com.aks.stockpile.helpers.RecycleViewHelper;
 import com.aks.stockpile.services.StockpileDaoService;
 import com.aks.stockpile.services.impl.StockpileDaoServiceImpl;
-import com.aks.stockpile.utils.LayoutUtils;
+import com.aks.stockpile.utils.Utilities;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
 
-public class GroceryActivity extends AppCompatActivity implements RecycleViewHelper {
+public class GroceryActivity extends AppCompatActivity {
 
+    public StockpileDaoService daoService;
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ViewPager viewPager;
     private TabLayout tabLayout;
-
     private GroceryCategoryFragment groceryCategoryFragment;
     private GroceryInventoryFragment groceryInventoryFragment;
     private OutOfStockFragment outOfStockFragment;
-
-    public StockpileDaoService daoService;
+    private ExpenditureFragment expenditureFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,31 +47,34 @@ public class GroceryActivity extends AppCompatActivity implements RecycleViewHel
     }
 
     private void initializeFields() {
-        groceryCategoryFragment = new GroceryCategoryFragment();
-        groceryInventoryFragment = new GroceryInventoryFragment();
-        outOfStockFragment = new OutOfStockFragment();
         daoService = new StockpileDaoServiceImpl(this);
+        groceryCategoryFragment = new GroceryCategoryFragment(daoService);
+        groceryInventoryFragment = new GroceryInventoryFragment(daoService);
+        outOfStockFragment = new OutOfStockFragment(daoService);
+        expenditureFragment = new ExpenditureFragment(daoService);
     }
 
     private void initializeFragments() {
         tabLayout.setupWithViewPager(viewPager);
         GroceryFragmentAdapter viewPagerAdapter = new GroceryFragmentAdapter(getSupportFragmentManager(), 0);
+        viewPagerAdapter.addFragment(expenditureFragment, "Expenditure");
         viewPagerAdapter.addFragment(groceryCategoryFragment, "Categories");
         viewPagerAdapter.addFragment(groceryInventoryFragment, "My Inventory");
         viewPagerAdapter.addFragment(outOfStockFragment, "Out of Stock");
 
         viewPager.setAdapter(viewPagerAdapter);
 
-        tabLayout.getTabAt(0).setIcon(R.drawable.categories);
-        tabLayout.getTabAt(1).setIcon(R.drawable.inventory);
-        tabLayout.getTabAt(2).setIcon(R.drawable.error);
+        tabLayout.getTabAt(0).setIcon(R.drawable.expenditure);
+        tabLayout.getTabAt(1).setIcon(R.drawable.categories);
+        tabLayout.getTabAt(2).setIcon(R.drawable.inventory);
+        tabLayout.getTabAt(3).setIcon(R.drawable.error);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         int oosCount = daoService.getOutOfStock().size();
-        BadgeDrawable outOfStockBadge = tabLayout.getTabAt(2).getOrCreateBadge();
+        BadgeDrawable outOfStockBadge = tabLayout.getTabAt(3).getOrCreateBadge();
         outOfStockBadge.setNumber(oosCount);
         if (oosCount > 0) {
             outOfStockBadge.setVisible(true);
@@ -87,9 +89,7 @@ public class GroceryActivity extends AppCompatActivity implements RecycleViewHel
         if (resultCode == RESULT_OK && requestCode == 112) {
             String message = data.getStringExtra("message");
             if (message != null && !message.equals("")) {
-                groceryInventoryFragment.initializeRecyclerView();
-                outOfStockFragment.initializeRecyclerView();
-                LayoutUtils.makeSnackbar(this, drawerLayout, message)
+                Utilities.makeSnackbar(this, drawerLayout, message)
                         .show();
             }
         }
@@ -124,12 +124,11 @@ public class GroceryActivity extends AppCompatActivity implements RecycleViewHel
             this.finish();
             return true;
         }
+        if (item.getItemId() == R.id.search) {
+            Intent searchIntent = new Intent(this, SearchActivity.class);
+            startActivity(searchIntent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void refreshRecycleViewData() {
-        groceryInventoryFragment.initializeRecyclerView();
-        outOfStockFragment.initializeRecyclerView();
     }
 }

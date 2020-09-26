@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CardView.Clickable"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/expenditure_rv_title"
+            style="@style/TextView.TitleText"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/expenditure_image"
+            android:text="Vegetables"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/expenditure_rv_total"
+            style="@style/TextView.SubText"
+            android:layout_below="@id/expenditure_rv_title"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/expenditure_image"
+            android:text="Total Spent: ₹1200"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/expenditure_rv_month"
+            style="@style/TextView.SubText"
+            android:layout_below="@id/expenditure_rv_total"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/expenditure_image"
+            android:text="Monthly average: ₹340"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/expenditure_rv_week"
+            style="@style/TextView.SubText"
+            android:layout_below="@id/expenditure_rv_month"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/expenditure_image"
+            android:text="Weekly Average: ₹70"
+            android:textSize="15sp"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/expenditure_rv_breakdown_btn"
+            style="@style/Button"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/expenditure_rv_week"
+            android:layout_alignParentEnd="true"
+            android:text="Monthly Splitup"
+            />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/expenditure_image"
+            style="@style/ImageView.FixedWidth"
+            android:layout_width="160dp"
+            android:layout_height="170dp"
+            android:src="@drawable/grains"
+            />
+
+    </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+</com.google.android.material.card.MaterialCardView>

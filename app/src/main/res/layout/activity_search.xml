@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.circularreveal.CircularRevealRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout_search"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/item_on_primary"
+    android:orientation="vertical"
+    tools:context=".activities.SearchActivity"
+    >
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_recycle"
+        android:layout_below="@id/search_box_ipl"
+        style="@style/VerticalRecyclerView"
+        android:layout_marginTop="10dp"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/search_back"
+        style="@style/Button"
+        app:backgroundTint="@color/primary_text"
+        android:layout_width="40dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@id/grocery_details_update"
+        android:background="@drawable/back"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/search_box_ipl"
+        android:layout_toEndOf="@id/search_back"
+        style="@style/TextInputField"
+        android:hint="Search..."
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/search_box_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/main_bg"
+            android:inputType="text"
+            android:textColor="@color/primary_text"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</com.google.android.material.circularreveal.CircularRevealRelativeLayout>

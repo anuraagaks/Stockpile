@@ -1,6 +1,7 @@
 package com.aks.stockpile.services;
 
 import com.aks.stockpile.models.PreDataDto;
+import com.aks.stockpile.models.dtos.AggregatedExpenditure;
 import com.aks.stockpile.models.dtos.AggregatedInventory;
 import com.aks.stockpile.models.dtos.GroceryCategoryCardDto;
 import com.aks.stockpile.models.dtos.GroceryDetailsDto;
@@ -39,5 +40,23 @@ public interface StockpileDaoService {
 
     void updateInventory(InventoryDto dto);
 
-    Integer getInventoryIdByCategoryAndArticle(Integer categoryId, String name);
+    Integer getInventoryIdByCategoryAndArticle(Integer categoryId, Integer name);
+
+    List<AggregatedExpenditure> getExpenditureByInventoryId(Integer inventoryId);
+
+    List<AggregatedExpenditure> getAllExpenditure();
+
+    List<ArticleEntity> searchArticle(String name);
+
+    List<GroceryDetailsDto> searchInventory(String name);
+
+    List<GroceryDetailsDto> getAllInventoryNameAZ();
+
+    List<GroceryDetailsDto> getAllInventoryNameZA();
+
+    List<GroceryDetailsDto> getAllInventoryQuantityHL();
+
+    List<GroceryDetailsDto> getAllInventoryQuantityLH();
+
+    Integer saveArticle(ArticleEntity buildArticle);
 }

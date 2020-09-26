@@ -9,22 +9,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aks.stockpile.R;
-import com.aks.stockpile.models.entities.InventoryHistory;
-import com.aks.stockpile.utils.DateUtils;
+import com.aks.stockpile.models.dtos.AggregatedExpenditure;
+import com.aks.stockpile.utils.Utilities;
 
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class HistoryArrayAdapter extends ArrayAdapter<InventoryHistory> {
+public class HistoryArrayAdapter extends ArrayAdapter<AggregatedExpenditure> {
 
     public static final Integer ADD_IMAGE = R.drawable.add_inventroy;
     public static final Integer REDUCE_IMAGE = R.drawable.consumes;
     private Context mContext;
+    private List<AggregatedExpenditure> histories;
 
-    List<InventoryHistory> histories;
-
-    public HistoryArrayAdapter(Context context, List<InventoryHistory> histories) {
+    public HistoryArrayAdapter(Context context, List<AggregatedExpenditure> histories) {
         super(context, 0, histories);
         this.mContext = context;
         this.histories = histories;
@@ -32,7 +31,7 @@ public class HistoryArrayAdapter extends ArrayAdapter<InventoryHistory> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        InventoryHistory history = getItem(position);
+        AggregatedExpenditure expenditure = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.history_layout, parent, false);
         }
@@ -40,19 +39,19 @@ public class HistoryArrayAdapter extends ArrayAdapter<InventoryHistory> {
         TextView timestamp = convertView.findViewById(R.id.history_timestamp);
         TextView text = convertView.findViewById(R.id.history_text);
         String endText = null;
-        switch (history.getUpdateType()) {
+        switch (expenditure.getExpenditure().getUpdateType()) {
             case ADDED:
                 icon.setImageResource(ADD_IMAGE);
-                endText = String.format("(from %s)\n\t\tPrice: %s%s", history.getGrocerySource(),
+                endText = String.format("(from %s)\n\t\tPrice: %s%s", expenditure.getExpenditure().getSource(),
                         mContext.getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("CURRENCY_SYMBOL", "₹"),
-                        history.getPrice().intValue());
+                        expenditure.getExpenditure().getPrice());
                 break;
             case CONSUMED:
                 icon.setImageResource(REDUCE_IMAGE);
         }
-        timestamp.setText(DateUtils.formatDate(history.getUpdatedAt()));
+        timestamp.setText(Utilities.formatDate(expenditure.getExpenditure().getEntryDate()));
         StringBuilder finalText = new StringBuilder();
-        finalText.append(history.getQuantity()).append(history.getQuantityType());
+        finalText.append(expenditure.getExpenditure().getQuantity()).append(expenditure.getExpenditure().getQuantityType());
         if (endText != null) {
             finalText.append(" ").append(endText);
         }

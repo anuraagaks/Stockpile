@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.circularreveal.CircularRevealRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    >
+
+    <View
+        android:id="@+id/history_view"
+        android:layout_width="15dp"
+        android:layout_height="1dp"
+        />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/breakdown_icon"
+        style="@style/ImageView.FixedWidth"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_toEndOf="@id/history_view"
+        android:layout_weight="4"
+        android:src="@drawable/today"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/breakdown_text"
+        style="@style/TextView.DescriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/breakdown_text"
+        android:layout_toEndOf="@id/breakdown_icon"
+        android:padding="0dp"
+        android:paddingStart="5dp"
+        android:text="Sample Text"
+        android:textSize="13sp"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/breakdown_price"
+        style="@style/TextView.TitleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/breakdown_text"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@id/breakdown_icon"
+        android:paddingStart="5dp"
+        android:text="Sample Text"
+        android:textSize="15sp"
+        />
+
+</com.google.android.material.circularreveal.CircularRevealRelativeLayout>

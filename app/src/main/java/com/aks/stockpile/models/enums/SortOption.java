@@ -7,8 +7,7 @@ public enum SortOption {
 
     NAME_A_Z("Name - A->Z"),
     NAME_Z_A("Name - Z->A"),
-    CATEGORY_A_Z("Category - A->Z"),
-    CATEGORY_Z_A("Category - Z->A"),
+    DEFAULT("Default"),
     QUANTITY_H_L("Quantity - High->Low"),
     QUANTITY_L_H("Quantity - Low->High");
 

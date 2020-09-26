@@ -6,12 +6,11 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import java.util.List;
-
 import lombok.Data;
 
 @Data
-@Entity(tableName = "inventory", indices = @Index(value = {"article_id", "category_id"}, unique = true),
+@Entity(tableName = "inventory", indices = {@Index(value = {"article_id", "category_id"}, unique = true),
+        @Index(value = {"category_id"}), @Index(value = {"article_id"})},
         foreignKeys = {@ForeignKey(entity = ArticleEntity.class, parentColumns = "id", childColumns = "article_id"),
                 @ForeignKey(entity = CategoryEntity.class, parentColumns = "id", childColumns = "category_id")})
 public class InventoryEntity {
@@ -26,9 +25,6 @@ public class InventoryEntity {
     private Integer categoryId;
 
     private String name;
-
-    @ColumnInfo(name = "history")
-    private List<InventoryHistory> history;
 
     private Double quantity;
 

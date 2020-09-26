@@ -1,6 +1,7 @@
 package com.aks.stockpile.activities;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aks.stockpile.R;
 import com.aks.stockpile.adapters.HomePageAdapter;
 import com.aks.stockpile.models.dtos.HomeCardDto;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -128,5 +130,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        new MaterialAlertDialogBuilder(this)
+                .setTitle("Leaving?")
+                .setMessage("Are you sure you want to exit the app?")
+                .setCancelable(false)
+                .setNegativeButton("Exit the app", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .setPositiveButton("Stay in the app", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                })
+                .show();
     }
 }

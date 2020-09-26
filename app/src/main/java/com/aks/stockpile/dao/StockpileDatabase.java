@@ -9,9 +9,10 @@ import androidx.room.RoomDatabase;
 import com.aks.stockpile.convertors.TypeConverters;
 import com.aks.stockpile.models.entities.ArticleEntity;
 import com.aks.stockpile.models.entities.CategoryEntity;
+import com.aks.stockpile.models.entities.ExpenditureEntity;
 import com.aks.stockpile.models.entities.InventoryEntity;
 
-@Database(entities = {CategoryEntity.class, ArticleEntity.class, InventoryEntity.class}, version = 1)
+@Database(entities = {CategoryEntity.class, ArticleEntity.class, InventoryEntity.class, ExpenditureEntity.class}, version = 1)
 @androidx.room.TypeConverters(TypeConverters.class)
 public abstract class StockpileDatabase extends RoomDatabase {
 

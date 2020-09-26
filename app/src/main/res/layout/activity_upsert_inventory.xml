@@ -47,6 +47,7 @@
                     style="@style/DropDownField"
                     android:hint="Category *"
                     app:errorEnabled="true"
+                    app:helperText="Start typing..."
                     >
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -65,10 +66,32 @@
                     style="@style/DropDownField"
                     android:hint="Name *"
                     app:errorEnabled="true"
+                    app:helperText="Start typing..."
                     >
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/upsert_name_dropdown_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/main_bg"
+                        android:inputType="text"
+                        android:textColor="@color/primary_text"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/upsert_description_ipl"
+                    style="@style/TextInputField"
+                    android:hint="Description"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/error"
+                    app:helperText="(Optional)"
+                    app:helperTextEnabled="true"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/upsert_description_field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/main_bg"
@@ -156,27 +179,6 @@
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/upsert_source_dropdown_field"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/main_bg"
-                        android:inputType="text"
-                        android:textColor="@color/primary_text"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/upsert_description_ipl"
-                    style="@style/TextInputField"
-                    android:hint="Description"
-                    app:errorEnabled="true"
-                    app:errorIconDrawable="@drawable/error"
-                    app:helperText="(Optional)"
-                    app:helperTextEnabled="true"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/upsert_description_field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/main_bg"

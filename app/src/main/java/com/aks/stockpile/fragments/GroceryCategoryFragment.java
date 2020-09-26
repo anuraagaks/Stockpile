@@ -11,23 +11,24 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aks.stockpile.R;
-import com.aks.stockpile.activities.GroceryActivity;
 import com.aks.stockpile.activities.UpsertInventoryActivity;
 import com.aks.stockpile.adapters.GroceryCategoryAdapter;
-import com.aks.stockpile.helpers.RecycleViewHelper;
 import com.aks.stockpile.models.dtos.GroceryCategoryCardDto;
+import com.aks.stockpile.services.StockpileDaoService;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
 import static com.aks.stockpile.constants.IntentExtrasConstants.GROCERY_UPSERT_IS_UPDATE;
 
-public class GroceryCategoryFragment extends Fragment implements RecycleViewHelper {
+public class GroceryCategoryFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private MaterialButton add;
+    private StockpileDaoService daoService;
 
-    public GroceryCategoryFragment() {
+    public GroceryCategoryFragment(StockpileDaoService daoService) {
+        this.daoService = daoService;
     }
 
     @Override
@@ -41,7 +42,7 @@ public class GroceryCategoryFragment extends Fragment implements RecycleViewHelp
     }
 
     private void initializeRecyclerView() {
-        List<GroceryCategoryCardDto> data = ((GroceryActivity) getActivity()).daoService.getAllCategories();
+        List<GroceryCategoryCardDto> data = daoService.getAllCategories();
         GroceryCategoryAdapter homePageAdapter = new GroceryCategoryAdapter(getContext(), data);
         recyclerView.setAdapter(homePageAdapter);
         int orientationValue = getResources().getConfiguration().orientation;
@@ -51,6 +52,12 @@ public class GroceryCategoryFragment extends Fragment implements RecycleViewHelp
         if (orientationValue == 2) {
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initializeRecyclerView();
     }
 
     @Override
@@ -75,10 +82,5 @@ public class GroceryCategoryFragment extends Fragment implements RecycleViewHelp
                 getActivity().startActivityForResult(upsertIntent, 112);
             }
         });
-    }
-
-    @Override
-    public void refreshRecycleViewData() {
-        initializeRecyclerView();
     }
 }

@@ -1,6 +1,6 @@
 package com.aks.stockpile.models.dtos;
 
-import com.aks.stockpile.dao.ImageResourceResolver;
+import com.aks.stockpile.utils.Utilities;
 
 import lombok.Data;
 
@@ -14,6 +14,6 @@ public class CardDto {
     protected Integer imageResourceId;
 
     public Integer getImageResourceId() {
-        return ImageResourceResolver.getImageResource(imageResourceId);
+        return Utilities.getImageResource(imageResourceId);
     }
 }

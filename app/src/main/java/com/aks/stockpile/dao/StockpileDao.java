@@ -6,9 +6,11 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
 
+import com.aks.stockpile.models.dtos.AggregatedExpenditure;
 import com.aks.stockpile.models.dtos.AggregatedInventory;
 import com.aks.stockpile.models.entities.ArticleEntity;
 import com.aks.stockpile.models.entities.CategoryEntity;
+import com.aks.stockpile.models.entities.ExpenditureEntity;
 import com.aks.stockpile.models.entities.InventoryEntity;
 
 import java.util.List;
@@ -49,7 +51,10 @@ public interface StockpileDao {
     List<AggregatedInventory> findOOSInventory();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void saveInventory(InventoryEntity entity);
+    Long saveInventory(InventoryEntity entity);
+
+    @Insert
+    void saveExpenditure(ExpenditureEntity entity);
 
     @Query("DELETE FROM inventory WHERE id = :id")
     void deleteInventory(Integer id);
@@ -58,6 +63,40 @@ public interface StockpileDao {
     @Transaction
     List<AggregatedInventory> getOutOfStockInventory();
 
-    @Query("SELECT * FROM inventory WHERE category_id = :categoryId AND name = :name")
-    InventoryEntity getInventoryByCategoryAndName(Integer categoryId, String name);
+    @Query("SELECT * FROM inventory WHERE category_id = :categoryId AND article_id = :articleId")
+    InventoryEntity getInventoryByCategoryAndName(Integer categoryId, Integer articleId);
+
+    @Query("SELECT * FROM expenditure WHERE inventory_id = :inventoryId")
+    @Transaction
+    List<AggregatedExpenditure> getExpenditureByInventoryId(Integer inventoryId);
+
+    @Query("SELECT * FROM expenditure")
+    @Transaction
+    List<AggregatedExpenditure> findAllExpenditure();
+
+    @Query("SELECT * FROM article WHERE LOWER(name) LIKE '%' || :name || '%' ORDER BY name")
+    List<ArticleEntity> searchArticleByName(String name);
+
+    @Query("SELECT * FROM inventory WHERE LOWER(name) LIKE '%' || :name || '%' ORDER BY name")
+    @Transaction
+    List<AggregatedInventory> searchInventoryByName(String name);
+
+    @Query("SELECT * FROM inventory ORDER BY name")
+    @Transaction
+    List<AggregatedInventory> findAllInventoryOrderNameAZ();
+
+    @Query("SELECT * FROM inventory ORDER BY name DESC")
+    @Transaction
+    List<AggregatedInventory> findAllInventoryOrderNameZA();
+
+    @Query("SELECT * FROM inventory ORDER BY quantity")
+    @Transaction
+    List<AggregatedInventory> findAllInventoryOrderCategoryLH();
+
+    @Query("SELECT * FROM inventory ORDER BY quantity DESC")
+    @Transaction
+    List<AggregatedInventory> findAllInventoryOrderCategoryHL();
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    Long saveArticle(ArticleEntity article);
 }

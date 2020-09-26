@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/grocery_inventory_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -49,6 +50,18 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/grocery_inventory_recycle"
             style="@style/VerticalRecyclerView"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/grocery_inventory_no_data"
+            style="@style/TextView.TitleText"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:visibility="gone"
+            android:layout_marginEnd="20dp"
+            android:background="@color/divider"
+            android:gravity="center"
+            android:textSize="15sp"
             />
 
     </com.google.android.material.circularreveal.CircularRevealLinearLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.circularreveal.CircularRevealRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ExpenditureFragment"
+    >
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/expenditure_card"
+        style="@style/CardView.Clickable"
+        android:layout_margin="20dp"
+        >
+
+        <com.google.android.material.circularreveal.CircularRevealRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            >
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/expenditure_head_icon"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/cost"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/expenditure_title"
+                style="@style/TextView.DescriptionText"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/expenditure_head_icon"
+                android:padding="0dp"
+                android:text="Total Spent: "
+                android:textSize="18sp"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/expenditure_amount"
+                style="@style/TextView.TitleText"
+                android:layout_below="@id/expenditure_title"
+                android:layout_marginStart="25dp"
+                android:layout_toEndOf="@id/expenditure_head_icon"
+                android:text="₹ 2266"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/expenditure_monthly_avg"
+                style="@style/TextView.SubText"
+                android:layout_below="@id/expenditure_amount"
+                android:layout_toEndOf="@id/expenditure_head_icon"
+                android:text="Monthly Average: ₹ 100"
+                />
+
+        </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/expenditure_recycle"
+        android:layout_below="@id/expenditure_view_btn"
+        style="@style/VerticalRecyclerView"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/expenditure_view_btn"
+        style="@style/NormalButton"
+        android:text="View By"
+        app:icon="@drawable/sorting"
+        app:iconSize="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/item_on_primary"
+        android:layout_below="@id/expenditure_card"
+        />
+
+</com.google.android.material.circularreveal.CircularRevealRelativeLayout>

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "974d911f7ec1d337d87ca96a95d76a8a",
+    "identityHash": "888332afa9a986fb748279e6d7aa382f",
     "entities": [
       {
         "tableName": "category",
@@ -123,7 +123,7 @@
       },
       {
         "tableName": "inventory",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `article_id` INTEGER, `category_id` INTEGER, `name` TEXT, `history` TEXT, `quantity` REAL, `description` TEXT, FOREIGN KEY(`article_id`) REFERENCES `article`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`category_id`) REFERENCES `category`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `article_id` INTEGER, `category_id` INTEGER, `name` TEXT, `quantity` REAL, `description` TEXT, FOREIGN KEY(`article_id`) REFERENCES `article`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`category_id`) REFERENCES `category`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -146,12 +146,6 @@
           {
             "fieldPath": "name",
             "columnName": "name",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "history",
-            "columnName": "history",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -183,6 +177,22 @@
               "category_id"
             ],
             "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_inventory_article_id_category_id` ON `${TABLE_NAME}` (`article_id`, `category_id`)"
+          },
+          {
+            "name": "index_inventory_category_id",
+            "unique": false,
+            "columnNames": [
+              "category_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_inventory_category_id` ON `${TABLE_NAME}` (`category_id`)"
+          },
+          {
+            "name": "index_inventory_article_id",
+            "unique": false,
+            "columnNames": [
+              "article_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_inventory_article_id` ON `${TABLE_NAME}` (`article_id`)"
           }
         ],
         "foreignKeys": [
@@ -209,12 +219,126 @@
             ]
           }
         ]
+      },
+      {
+        "tableName": "expenditure",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`inventory_id` INTEGER, `category_id` INTEGER, `entry_date` INTEGER, `price` INTEGER, `quantity` REAL, `quantity_type` TEXT, `source` TEXT, `update_type` TEXT, `id` INTEGER, `name` TEXT, PRIMARY KEY(`id`), FOREIGN KEY(`inventory_id`) REFERENCES `inventory`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`category_id`) REFERENCES `category`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "inventoryId",
+            "columnName": "inventory_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "categoryId",
+            "columnName": "category_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "entryDate",
+            "columnName": "entry_date",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "price",
+            "columnName": "price",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "quantity",
+            "columnName": "quantity",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "quantityType",
+            "columnName": "quantity_type",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "source",
+            "columnName": "source",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "updateType",
+            "columnName": "update_type",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_expenditure_inventory_id",
+            "unique": false,
+            "columnNames": [
+              "inventory_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_expenditure_inventory_id` ON `${TABLE_NAME}` (`inventory_id`)"
+          },
+          {
+            "name": "index_expenditure_category_id",
+            "unique": false,
+            "columnNames": [
+              "category_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_expenditure_category_id` ON `${TABLE_NAME}` (`category_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "inventory",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "inventory_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "category",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "category_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '974d911f7ec1d337d87ca96a95d76a8a')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '888332afa9a986fb748279e6d7aa382f')"
     ]
   }
 }

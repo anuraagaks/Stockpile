@@ -16,6 +16,6 @@ public class InventoryDto {
     private Double quantity;
     private String description;
     private String source;
-    private Double price;
+    private Integer price;
 
 }

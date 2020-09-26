@@ -5,6 +5,7 @@ import android.content.Context;
 import com.aks.stockpile.dao.StockpileDao;
 import com.aks.stockpile.dao.StockpileDatabase;
 import com.aks.stockpile.models.PreDataDto;
+import com.aks.stockpile.models.dtos.AggregatedExpenditure;
 import com.aks.stockpile.models.dtos.AggregatedInventory;
 import com.aks.stockpile.models.dtos.GroceryCategoryCardDto;
 import com.aks.stockpile.models.dtos.GroceryDetailsDto;
@@ -12,13 +13,12 @@ import com.aks.stockpile.models.dtos.InventoryDto;
 import com.aks.stockpile.models.entities.AbstractEntity;
 import com.aks.stockpile.models.entities.ArticleEntity;
 import com.aks.stockpile.models.entities.CategoryEntity;
+import com.aks.stockpile.models.entities.ExpenditureEntity;
 import com.aks.stockpile.models.entities.InventoryEntity;
-import com.aks.stockpile.models.entities.InventoryHistory;
 import com.aks.stockpile.models.enums.InventoryUpdateType;
 import com.aks.stockpile.services.StockpileDaoService;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -65,8 +65,7 @@ public class StockpileDaoServiceImpl implements StockpileDaoService {
 
     @Override
     public List<GroceryDetailsDto> getInventoryByCategory(Integer categoryId) {
-        List<AggregatedInventory> entities = dao.getInventoryByCategoryId(categoryId);
-        return mapToDto(entities);
+        return mapToDto(dao.getInventoryByCategoryId(categoryId));
     }
 
     @Override
@@ -115,7 +114,9 @@ public class StockpileDaoServiceImpl implements StockpileDaoService {
             entity.setDescription(dto.getDescription());
         }
         addQuantity(entity, dto);
-        dao.saveInventory(entity);
+        Long id = dao.saveInventory(entity);
+        entity.setId(id.intValue());
+        saveExpenditure(entity, dto);
     }
 
     @Override
@@ -127,29 +128,32 @@ public class StockpileDaoServiceImpl implements StockpileDaoService {
 
     private void reduceQuantity(InventoryEntity entity, InventoryDto dto) {
         Double factor = dto.getQuantityType().getWeightMap().get(dto.getQuantityTypeName());
-        InventoryHistory history = new InventoryHistory();
-        history.setQuantityType(dto.getQuantityTypeName());
-        history.setQuantity(dto.getQuantity());
-        history.setUpdateType(InventoryUpdateType.CONSUMED);
-        history.setUpdatedAt(new Date());
-        entity.getHistory().add(history);
+        ExpenditureEntity expenditure = new ExpenditureEntity();
+        expenditure.setInventoryId(entity.getId());
+        expenditure.setCategoryId(entity.getCategoryId());
+        expenditure.setQuantityType(dto.getQuantityTypeName());
+        expenditure.setQuantity(dto.getQuantity());
+        expenditure.setUpdateType(InventoryUpdateType.CONSUMED);
+        expenditure.setEntryDate(new Date());
+        dao.saveExpenditure(expenditure);
         entity.setQuantity(entity.getQuantity() - factor * dto.getQuantity());
+    }
+
+    private void saveExpenditure(InventoryEntity entity, InventoryDto dto) {
+        ExpenditureEntity expenditure = new ExpenditureEntity();
+        expenditure.setInventoryId(entity.getId());
+        expenditure.setCategoryId(entity.getCategoryId());
+        expenditure.setQuantityType(dto.getQuantityTypeName());
+        expenditure.setQuantity(dto.getQuantity());
+        expenditure.setSource(dto.getSource());
+        expenditure.setPrice(dto.getPrice());
+        expenditure.setUpdateType(InventoryUpdateType.ADDED);
+        expenditure.setEntryDate(new Date());
+        dao.saveExpenditure(expenditure);
     }
 
     private void addQuantity(InventoryEntity entity, InventoryDto dto) {
         Double factor = dto.getQuantityType().getWeightMap().get(dto.getQuantityTypeName());
-        InventoryHistory history = new InventoryHistory();
-        history.setQuantityType(dto.getQuantityTypeName());
-        history.setQuantity(dto.getQuantity());
-        history.setGrocerySource(dto.getSource());
-        history.setPrice(dto.getPrice());
-        history.setUpdateType(InventoryUpdateType.ADDED);
-        history.setUpdatedAt(new Date());
-        if (entity.getHistory() == null) {
-            entity.setHistory(Collections.singletonList(history));
-        } else {
-            entity.getHistory().add(history);
-        }
         if (entity.getQuantity() != null)
             entity.setQuantity(entity.getQuantity() + factor * dto.getQuantity());
         else
@@ -157,12 +161,57 @@ public class StockpileDaoServiceImpl implements StockpileDaoService {
     }
 
     @Override
-    public Integer getInventoryIdByCategoryAndArticle(Integer categoryId, String name) {
-        InventoryEntity entity = dao.getInventoryByCategoryAndName(categoryId, name);
+    public Integer getInventoryIdByCategoryAndArticle(Integer categoryId, Integer articleId) {
+        InventoryEntity entity = dao.getInventoryByCategoryAndName(categoryId, articleId);
         if (entity != null) {
             return entity.getId();
         }
         return null;
+    }
+
+    @Override
+    public List<AggregatedExpenditure> getExpenditureByInventoryId(Integer inventoryId) {
+        return dao.getExpenditureByInventoryId(inventoryId);
+    }
+
+    @Override
+    public List<AggregatedExpenditure> getAllExpenditure() {
+        return dao.findAllExpenditure();
+    }
+
+    @Override
+    public List<ArticleEntity> searchArticle(String name) {
+        return dao.searchArticleByName(name);
+    }
+
+    @Override
+    public List<GroceryDetailsDto> searchInventory(String name) {
+        return mapToDto(dao.searchInventoryByName(name));
+    }
+
+    @Override
+    public List<GroceryDetailsDto> getAllInventoryNameAZ() {
+        return mapToDto(dao.findAllInventoryOrderNameAZ());
+    }
+
+    @Override
+    public List<GroceryDetailsDto> getAllInventoryNameZA() {
+        return mapToDto(dao.findAllInventoryOrderNameZA());
+    }
+
+    @Override
+    public List<GroceryDetailsDto> getAllInventoryQuantityHL() {
+        return mapToDto(dao.findAllInventoryOrderCategoryHL());
+    }
+
+    @Override
+    public List<GroceryDetailsDto> getAllInventoryQuantityLH() {
+        return mapToDto(dao.findAllInventoryOrderCategoryLH());
+    }
+
+    @Override
+    public Integer saveArticle(ArticleEntity article) {
+        return dao.saveArticle(article).intValue();
     }
 
     private <T extends AbstractEntity> Map<String, T> buildAbstractModel(List<T> entities) {

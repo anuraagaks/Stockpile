@@ -15,9 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aks.stockpile.R;
 import com.aks.stockpile.activities.UpsertInventoryActivity;
-import com.aks.stockpile.helpers.RecycleViewHelper;
+import com.aks.stockpile.models.dtos.AggregatedExpenditure;
 import com.aks.stockpile.models.dtos.GroceryDetailsDto;
-import com.aks.stockpile.models.entities.InventoryHistory;
 import com.aks.stockpile.services.StockpileDaoService;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
@@ -72,7 +71,6 @@ public class GroceryDetailsAdapter extends RecyclerView.Adapter<GroceryDetailsAd
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 daoService.deleteInventory(data.get(position).getId());
-                                ((RecycleViewHelper) mContext).refreshRecycleViewData();
                             }
                         })
                         .setNegativeButton(R.string.negetive_untrack, new DialogInterface.OnClickListener() {
@@ -114,12 +112,13 @@ public class GroceryDetailsAdapter extends RecyclerView.Adapter<GroceryDetailsAd
         holder.history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showHistory(data.get(position).getHistories(), data.get(position).getName());
+                showHistory(data.get(position).getName(), data.get(position).getId());
             }
         });
     }
 
-    private void showHistory(List<InventoryHistory> histories, String name) {
+    private void showHistory(String name, Integer inventoryId) {
+        List<AggregatedExpenditure> expenditures = daoService.getExpenditureByInventoryId(inventoryId);
         new MaterialAlertDialogBuilder(mContext)
                 .setTitle("Change log for " + name)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -127,7 +126,7 @@ public class GroceryDetailsAdapter extends RecyclerView.Adapter<GroceryDetailsAd
                     public void onClick(DialogInterface dialogInterface, int i) {
                     }
                 })
-                .setAdapter(new HistoryArrayAdapter(mContext, histories), new DialogInterface.OnClickListener() {
+                .setAdapter(new HistoryArrayAdapter(mContext, expenditures), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                     }

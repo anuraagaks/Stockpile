@@ -22,13 +22,14 @@ import com.aks.stockpile.models.entities.CategoryEntity;
 import com.aks.stockpile.models.enums.QuantityType;
 import com.aks.stockpile.services.StockpileDaoService;
 import com.aks.stockpile.services.impl.StockpileDaoServiceImpl;
-import com.aks.stockpile.utils.InventoryUtils;
+import com.aks.stockpile.utils.Utilities;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
@@ -101,13 +102,15 @@ public class UpsertInventoryActivity extends AppCompatActivity {
     }
 
     private boolean saveData() {
+        selectedArticle = nameDropdown.getText().toString();
+        selectedCategory = categoryDropdown.getText().toString();
         if (isConsumeRequest) {
             if (validateFields(categoryDropdown.getText(), categoryInput) || validateFields(nameDropdown.getText(), nameInput)
                     || validateFields(quantity.getText(), quantityInput))
                 return false;
-            Double factor = InventoryUtils.getQuantityType(categoryMap.get(selectedCategory), articlesMap.get(selectedArticle))
-                    .getWeightMap().get(quantity.getText().toString());
-            if (Double.parseDouble(quantity.getText().toString()) > factor * availableQuantity) {
+            Double factor = Utilities.getQuantityType(categoryMap.get(selectedCategory), articlesMap.get(selectedArticle))
+                    .getWeightMap().get(quantityTypeDropdown.getText().toString());
+            if (factor * Double.parseDouble(quantity.getText().toString()) > availableQuantity) {
                 quantityInput.requestFocus();
                 quantityInput.setError("Available quantity is only " + availableQuantity + availableQuantityType);
                 return false;
@@ -119,16 +122,38 @@ public class UpsertInventoryActivity extends AppCompatActivity {
                     || validateFields(quantityTypeDropdown.getText(), quantityTypeInput) || validateFields(quantity.getText(), quantityInput)
                     || validateFields(sourceDropdown.getText(), sourceInput) || validateFields(price.getText(), priceInput))
                 return false;
-            Integer categoryId = fetchId(selectedCategory, categoryMap, categoryInput);
-            Integer articleId = fetchId(selectedArticle, articlesMap, nameInput);
-            Integer inventoryId = daoService.getInventoryIdByCategoryAndArticle(categoryId, nameDropdown.getText().toString());
-            if (categoryId == 0) {
+            Integer categoryId = fetchId(selectedCategory, categoryMap, categoryInput, true);
+            Integer articleId = fetchId(selectedArticle, articlesMap, nameInput, false);
+            if (articleId == 0) {
+                List<ArticleEntity> entities = daoService.searchArticle(selectedArticle);
+                if (entities == null || entities.isEmpty()) {
+                    articleId = daoService.saveArticle(buildArticle(categoryId, categoryMap.get(selectedCategory)));
+                } else {
+                    for (ArticleEntity entity : entities) {
+                        if (entity.getName().equals(selectedArticle)) {
+                            articleId = entity.getId();
+                            categoryId = entity.getCategoryId();
+                        }
+                    }
+                }
+            }
+            Integer inventoryId = daoService.getInventoryIdByCategoryAndArticle(categoryId, articleId);
+            if (categoryId == 0 || articleId == 0) {
                 return false;
             }
             InventoryDto dto = buildDto(categoryId, articleId, inventoryId);
             daoService.saveInventory(dto);
         }
         return true;
+    }
+
+    private ArticleEntity buildArticle(Integer categoryId, CategoryEntity categoryEntity) {
+        ArticleEntity entity = new ArticleEntity();
+        entity.setCategoryId(categoryId);
+        entity.setName(selectedArticle.trim());
+        entity.setQuantityType(Utilities.getQuantityType(categoryEntity, null));
+        entity.setThresholdPercentage(25.0);
+        return entity;
     }
 
     private boolean validateFields(Editable textField, TextInputLayout inputLayout) {
@@ -144,18 +169,18 @@ public class UpsertInventoryActivity extends AppCompatActivity {
         InventoryDto dto = new InventoryDto();
         dto.setArticleId(articleId);
         dto.setCategoryId(categoryId);
-        dto.setName(nameDropdown.getText().toString());
+        dto.setName(selectedArticle.trim());
         if (inventoryId != null && inventoryId != 0) {
             dto.setId(inventoryId);
         }
         String quantityString = quantity.getText().toString();
-        dto.setQuantity(Double.parseDouble(String.format("%.2f", Double.parseDouble(quantityString))));
-        dto.setQuantityType(InventoryUtils.getQuantityType(categoryMap.get(selectedCategory), articlesMap.get(selectedArticle)));
+        dto.setQuantity(Double.parseDouble(quantityString));
+        dto.setQuantityType(Utilities.getQuantityType(categoryMap.get(selectedCategory), articlesMap.get(selectedArticle)));
         dto.setQuantityTypeName(quantityTypeDropdown.getText().toString());
-        dto.setPrice(Double.parseDouble(price.getText().toString()));
+        dto.setPrice(Integer.parseInt(price.getText().toString()));
         if (description.getText() != null)
-            dto.setDescription(description.getText().toString());
-        dto.setSource(sourceDropdown.getText().toString());
+            dto.setDescription(description.getText().toString().trim());
+        dto.setSource(sourceDropdown.getText().toString().trim());
         return dto;
     }
 
@@ -163,17 +188,19 @@ public class UpsertInventoryActivity extends AppCompatActivity {
         InventoryDto dto = new InventoryDto();
         dto.setId(inventoryId);
         String quantityString = quantity.getText().toString();
-        dto.setQuantityType(InventoryUtils.getQuantityType(categoryMap.get(selectedCategory), articlesMap.get(selectedArticle)));
+        dto.setQuantityType(Utilities.getQuantityType(categoryMap.get(selectedCategory), articlesMap.get(selectedArticle)));
         dto.setQuantityTypeName(quantityTypeDropdown.getText().toString());
-        dto.setQuantity(Double.parseDouble(String.format("%.2f", Double.parseDouble(quantityString))));
+        dto.setQuantity(Double.parseDouble(quantityString));
         return dto;
     }
 
     private Integer fetchId(String selectedValue, Map<String, ? extends AbstractEntity> valueMap,
-                            TextInputLayout inputLayout) {
+                            TextInputLayout inputLayout, boolean showError) {
         if (valueMap.get(selectedValue) == null) {
-            inputLayout.requestFocus();
-            inputLayout.setError("Invalid value - " + selectedValue + ", please select from the list!");
+            if (showError) {
+                inputLayout.requestFocus();
+                inputLayout.setError("Invalid value - " + selectedValue + ", please select from the list!");
+            }
             return 0;
         } else {
             return valueMap.get(selectedValue).getId();
@@ -211,7 +238,7 @@ public class UpsertInventoryActivity extends AppCompatActivity {
                 put(selectedArticle, inventory.getArticle());
             }};
             quantityTypeAdapter.clear();
-            quantityTypeAdapter.addAll(InventoryUtils.getQuantityType(inventory.getCategory(), inventory.getArticle()).getWeightMap().keySet());
+            quantityTypeAdapter.addAll(Utilities.getQuantityType(inventory.getCategory(), inventory.getArticle()).getWeightMap().keySet());
             quantityTypeDropdown.setAdapter(quantityTypeAdapter);
             sourceInput.setVisibility(View.GONE);
             descriptionInput.setVisibility(View.GONE);
@@ -231,7 +258,7 @@ public class UpsertInventoryActivity extends AppCompatActivity {
                 put(selectedArticle, inventory.getArticle());
             }};
             quantityTypeAdapter.clear();
-            quantityTypeAdapter.addAll(InventoryUtils.getQuantityType(inventory.getCategory(), inventory.getArticle()).getWeightMap().keySet());
+            quantityTypeAdapter.addAll(Utilities.getQuantityType(inventory.getCategory(), inventory.getArticle()).getWeightMap().keySet());
             quantityTypeDropdown.setAdapter(quantityTypeAdapter);
         } else {
             categoryMap = daoService.getCategoriesForDropdown();
@@ -241,31 +268,29 @@ public class UpsertInventoryActivity extends AppCompatActivity {
             categoryDropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    selectedCategory = categoryDropdown.getAdapter().getItem(i).toString();
-                    nameDropdown.setText("");
-                    quantityTypeDropdown.setText("");
-                    articlesMap = daoService.getArticlesForDropdown(
-                            categoryMap.get(categoryDropdown.getAdapter().getItem(i).toString()).getId());
+                    selectedCategory = categoryDropdown.getText().toString();
+                    articlesMap = daoService.getArticlesForDropdown(categoryMap.get(selectedCategory).getId());
                     nameAdapter.clear();
                     nameAdapter.addAll(articlesMap.keySet());
                     nameDropdown.setAdapter(nameAdapter);
-                    quantityTypeDropdown.setText("");
-                    QuantityType quantityType = InventoryUtils.getQuantityType(categoryMap.get(selectedCategory), null);
+                    nameDropdown.setText("");
+                    QuantityType quantityType = Utilities.getQuantityType(categoryMap.get(selectedCategory), null);
                     quantityTypeAdapter.clear();
                     quantityTypeAdapter.addAll(quantityType.getWeightMap().keySet());
                     quantityTypeDropdown.setAdapter(quantityTypeAdapter);
+                    quantityTypeDropdown.setText("");
                 }
             });
             nameDropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    selectedArticle = nameDropdown.getAdapter().getItem(i).toString();
-                    quantityTypeDropdown.setText("");
-                    QuantityType quantityType = InventoryUtils.getQuantityType(categoryMap.get(selectedCategory),
+                    selectedArticle = nameDropdown.getText().toString();
+                    QuantityType quantityType = Utilities.getQuantityType(categoryMap.get(selectedCategory),
                             articlesMap.get(selectedArticle));
                     quantityTypeAdapter.clear();
                     quantityTypeAdapter.addAll(quantityType.getWeightMap().keySet());
                     quantityTypeDropdown.setAdapter(quantityTypeAdapter);
+                    quantityTypeDropdown.setText("");
                 }
             });
         }
