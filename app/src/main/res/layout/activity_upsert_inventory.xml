@@ -46,8 +46,6 @@
                     android:id="@+id/upsert_cat_dropdown_ipl"
                     style="@style/DropDownField"
                     android:hint="Category *"
-                    app:errorEnabled="true"
-                    app:helperText="Start typing..."
                     >
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -55,7 +53,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/main_bg"
-                        android:inputType="text"
+                        android:inputType="none"
                         android:textColor="@color/primary_text"
                         />
 
@@ -74,7 +72,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/main_bg"
-                        android:inputType="text"
+                        android:inputType="textCapSentences"
                         android:textColor="@color/primary_text"
                         />
 
@@ -86,7 +84,7 @@
                     android:hint="Description"
                     app:errorEnabled="true"
                     app:errorIconDrawable="@drawable/error"
-                    app:helperText="(Optional)"
+                    app:helperText="(Optional) Add anything specific to the item."
                     app:helperTextEnabled="true"
                     >
 
@@ -95,7 +93,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/main_bg"
-                        android:inputType="text"
+                        android:inputType="textCapSentences"
                         android:textColor="@color/primary_text"
                         />
 
@@ -182,7 +180,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/main_bg"
-                        android:inputType="text"
+                        android:inputType="textCapSentences"
                         android:textColor="@color/primary_text"
                         />
 

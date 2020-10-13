@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +18,20 @@ import com.aks.stockpile.R;
 import com.aks.stockpile.activities.UpsertInventoryActivity;
 import com.aks.stockpile.models.dtos.AggregatedExpenditure;
 import com.aks.stockpile.models.dtos.GroceryDetailsDto;
+import com.aks.stockpile.services.IGroceryRefresher;
 import com.aks.stockpile.services.StockpileDaoService;
+import com.aks.stockpile.utils.Utilities;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.aks.stockpile.constants.IntentExtrasConstants.GROCERY_INVENTORY_ID;
 import static com.aks.stockpile.constants.IntentExtrasConstants.GROCERY_NAME;
 import static com.aks.stockpile.constants.IntentExtrasConstants.GROCERY_UPSERT_AVAILABLE_QUANTITY;
@@ -60,7 +67,7 @@ public class GroceryDetailsAdapter extends RecyclerView.Adapter<GroceryDetailsAd
             holder.description.setText(data.get(position).getDescription());
         else
             holder.description.setVisibility(View.GONE);
-        holder.quantity.setText(String.format("%s %s", data.get(position).getQuantityValue(), data.get(position).getQuantityType()));
+        holder.quantity.setText(String.format("%s %s", Utilities.formatNumber(data.get(position).getQuantityValue()), data.get(position).getQuantityType()));
         holder.image.setImageResource(data.get(position).getImageResourceId());
         holder.untrack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +78,7 @@ public class GroceryDetailsAdapter extends RecyclerView.Adapter<GroceryDetailsAd
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 daoService.deleteInventory(data.get(position).getId());
+                                ((IGroceryRefresher) mContext).refreshRecycler();
                             }
                         })
                         .setNegativeButton(R.string.negetive_untrack, new DialogInterface.OnClickListener() {
@@ -115,18 +123,31 @@ public class GroceryDetailsAdapter extends RecyclerView.Adapter<GroceryDetailsAd
                 showHistory(data.get(position).getName(), data.get(position).getId());
             }
         });
+        holder.addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sp = mContext.getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+                Set<String> ids = new HashSet<>(sp.getStringSet("Shopping_cart", new HashSet<String>()));
+                SharedPreferences.Editor editor = sp.edit();
+                ids.add(data.get(position).getId().toString());
+                editor.putStringSet("Shopping_cart", ids);
+                editor.apply();
+                Utilities.makeSnackbar(mContext, holder.cardView, data.get(position).getName() + " added to cart.", Snackbar.LENGTH_LONG)
+                        .show();
+            }
+        });
     }
 
     private void showHistory(String name, Integer inventoryId) {
         List<AggregatedExpenditure> expenditures = daoService.getExpenditureByInventoryId(inventoryId);
         new MaterialAlertDialogBuilder(mContext)
-                .setTitle("Change log for " + name)
+                .setTitle("Purchase and Consume history for " + name)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                     }
                 })
-                .setAdapter(new HistoryArrayAdapter(mContext, expenditures), new DialogInterface.OnClickListener() {
+                .setAdapter(new HistoryArrayAdapter(mContext, expenditures, false), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                     }

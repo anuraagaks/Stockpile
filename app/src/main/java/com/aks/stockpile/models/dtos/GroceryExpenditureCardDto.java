@@ -9,8 +9,6 @@ import lombok.EqualsAndHashCode;
 @Data
 public class GroceryExpenditureCardDto extends CardDto {
 
-    private Integer weeklyAmount;
-
     private Integer monthlyAmount;
 
     private Integer totalAmount;

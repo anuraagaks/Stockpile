@@ -60,6 +60,7 @@ public class StockpileDaoServiceImpl implements StockpileDaoService {
 
     @Override
     public void deleteInventory(Integer inventoryId) {
+        dao.deleteExpenditure(inventoryId);
         dao.deleteInventory(inventoryId);
     }
 
@@ -175,6 +176,11 @@ public class StockpileDaoServiceImpl implements StockpileDaoService {
     }
 
     @Override
+    public List<AggregatedExpenditure> getExpenditureByCategoryId(Integer categoryId) {
+        return dao.getExpenditureByCategoryId(categoryId);
+    }
+
+    @Override
     public List<AggregatedExpenditure> getAllExpenditure() {
         return dao.findAllExpenditure();
     }
@@ -212,6 +218,14 @@ public class StockpileDaoServiceImpl implements StockpileDaoService {
     @Override
     public Integer saveArticle(ArticleEntity article) {
         return dao.saveArticle(article).intValue();
+    }
+
+    @Override
+    public List<AggregatedInventory> findInventoryIn(List<Integer> shoppingIds) {
+        if (shoppingIds.size() > 0) {
+            return dao.findInventoryByIdIn(shoppingIds);
+        }
+        return new ArrayList<>();
     }
 
     private <T extends AbstractEntity> Map<String, T> buildAbstractModel(List<T> entities) {

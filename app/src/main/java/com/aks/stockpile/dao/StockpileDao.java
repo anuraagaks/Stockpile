@@ -59,6 +59,9 @@ public interface StockpileDao {
     @Query("DELETE FROM inventory WHERE id = :id")
     void deleteInventory(Integer id);
 
+    @Query("DELETE FROM expenditure WHERE inventory_id = :inventoryId")
+    void deleteExpenditure(Integer inventoryId);
+
     @Query("SELECT * FROM inventory WHERE quantity <= 0")
     @Transaction
     List<AggregatedInventory> getOutOfStockInventory();
@@ -99,4 +102,12 @@ public interface StockpileDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Long saveArticle(ArticleEntity article);
+
+    @Query("SELECT * FROM inventory WHERE id IN (:shoppingIds)")
+    @Transaction
+    List<AggregatedInventory> findInventoryByIdIn(List<Integer> shoppingIds);
+
+    @Query("SELECT * FROM expenditure WHERE category_id = :categoryId")
+    @Transaction
+    List<AggregatedExpenditure> getExpenditureByCategoryId(Integer categoryId);
 }

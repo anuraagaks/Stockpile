@@ -22,10 +22,24 @@
         />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/history_name"
+        style="@style/TextView.DescriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/history_icon"
+        android:padding="0dp"
+        android:paddingStart="5dp"
+        android:layout_marginStart="35dp"
+        android:text="Sample One"
+        android:textSize="17sp"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/history_text"
         style="@style/TextView.DescriptionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/history_name"
         android:paddingStart="5dp"
         android:padding="0dp"
         android:layout_toEndOf="@id/history_icon"

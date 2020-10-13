@@ -97,7 +97,7 @@
                 android:layout_toEndOf="@id/grocery_details_update"
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"
-                android:background="@drawable/minus"
+                android:background="@drawable/reduce"
                 app:backgroundTint="@color/primary_text"
                 />
 

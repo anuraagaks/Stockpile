@@ -23,9 +23,9 @@ public class HomeCardDto {
 
     private Class<? extends AppCompatActivity> onClickActivity;
 
-    public static List<HomeCardDto> ofTest() {
+    public static List<HomeCardDto> ofData() {
         HomeCardDto dto1 = new HomeCardDto();
-        dto1.setMessage(" • 3 items Out of Stock.\n • 2 Items need to be Restocked.");
+        dto1.setMessage(" • Manage your grocery and household items.\n • Add/Update your grocery regularly.\n • Manage the expenses for the grocery at monthly/weekly basis.");
         dto1.setTitle("Groceries");
         dto1.setImageResource(R.drawable.grocery);
         dto1.setOnClickActivity(GroceryActivity.class);

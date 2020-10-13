@@ -95,7 +95,7 @@ public class ExpenditureFragment extends Fragment {
     }
 
     public void initializeRecyclerView(List<GroceryExpenditureCardDto> data) {
-        ExpenditureDetailsAdapter expenditureDetailsAdapter = new ExpenditureDetailsAdapter(getContext(), data);
+        ExpenditureDetailsAdapter expenditureDetailsAdapter = new ExpenditureDetailsAdapter(getContext(), data, daoService);
         recyclerView.setAdapter(expenditureDetailsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
@@ -133,23 +133,17 @@ public class ExpenditureFragment extends Fragment {
             }
         }
         for (Map.Entry<Integer, List<AggregatedExpenditure>> entry : expenditureMap.entrySet()) {
-            Map<Integer, Integer> monthlyTotal = new TreeMap<>(), weeklyTotal = new TreeMap<>();
+            Map<Integer, Integer> monthlyTotal = new TreeMap<>();
             Integer total = 0;
             for (AggregatedExpenditure expenditure : entry.getValue()) {
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(expenditure.getExpenditure().getEntryDate());
                 int month = calendar.get(Calendar.MONTH);
                 int year = calendar.get(Calendar.YEAR);
-                int weekNum = calendar.get(Calendar.WEEK_OF_YEAR);
                 if (monthlyTotal.get(year * 100 + month) != null) {
                     monthlyTotal.put(year * 100 + month, monthlyTotal.get(year * 100 + month) + expenditure.getExpenditure().getPrice());
                 } else {
                     monthlyTotal.put(year * 100 + month, expenditure.getExpenditure().getPrice());
-                }
-                if (weeklyTotal.get(year * 100 + weekNum) != null) {
-                    weeklyTotal.put(year * 100 + weekNum, weeklyTotal.get(year * 100 + weekNum) + expenditure.getExpenditure().getPrice());
-                } else {
-                    weeklyTotal.put(year * 100 + weekNum, expenditure.getExpenditure().getPrice());
                 }
                 total += expenditure.getExpenditure().getPrice();
             }
@@ -163,7 +157,6 @@ public class ExpenditureFragment extends Fragment {
                     dto.setName(entry.getValue().get(0).getInventory().getName());
                 }
                 grossTotal += total;
-                dto.setWeeklyAmount(weeklyTotal.isEmpty() ? total : total / weeklyTotal.size());
                 dto.setMonthlyAmount(monthlyTotal.isEmpty() ? total : total / monthlyTotal.size());
                 dto.setTotalAmount(total);
                 dto.setImageResourceId(entry.getValue().get(0).getCategory().getImageResource());

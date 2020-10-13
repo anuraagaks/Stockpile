@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main_menu, menu);
         menu.getItem(0).getIcon().setColorFilter(getResources().getColor(R.color.item_on_primary, getTheme()), PorterDuff.Mode.SRC_ATOP);
-        menu.getItem(1).getIcon().setColorFilter(getResources().getColor(R.color.item_on_primary, getTheme()), PorterDuff.Mode.SRC_ATOP);
         return true;
     }
 
@@ -111,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initializeRecyclerView() {
-        HomePageAdapter homePageAdapter = new HomePageAdapter(this, HomeCardDto.ofTest());
+        HomePageAdapter homePageAdapter = new HomePageAdapter(this, HomeCardDto.ofData());
         recyclerView.setAdapter(homePageAdapter);
         int orientationValue = getResources().getConfiguration().orientation;
         if (orientationValue == 1) {

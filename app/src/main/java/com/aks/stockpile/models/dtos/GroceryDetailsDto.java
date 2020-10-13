@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class GroceryDetailsDto extends CardDto {
 
     private String quantityType;
-    private String quantityValue;
+    private Double quantityValue;
     private String category;
     private String description;
 
@@ -23,11 +23,8 @@ public class GroceryDetailsDto extends CardDto {
         dto.setCategory(entity.getCategory().getName());
         dto.setName(entity.getInventory().getName());
         QuantityType quantityType = Utilities.getQuantityType(entity.getCategory(), entity.getArticle());
-        if (quantityType == null) {
-            quantityType = entity.getCategory().getQuantityType();
-        }
         dto.setQuantityType(quantityType.getValue());
-        dto.setQuantityValue(Utilities.formatNumber(entity.getInventory().getQuantity()));
+        dto.setQuantityValue(entity.getInventory().getQuantity());
         dto.setImageResourceId(entity.getCategory().getImageResource());
         dto.setDescription(entity.getInventory().getDescription());
         return dto;

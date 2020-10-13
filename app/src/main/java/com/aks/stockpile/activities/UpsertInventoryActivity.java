@@ -45,7 +45,7 @@ public class UpsertInventoryActivity extends AppCompatActivity {
 
     private MaterialButton saveButton;
     private Toolbar toolbar;
-    private Boolean isUpdateRequest, isConsumeRequest;
+    private Boolean isUpdateRequest, isConsumeRequest, isOOS = false;
     private Integer inventoryId;
     private Double availableQuantity;
     private StockpileDaoService daoService;
@@ -106,7 +106,7 @@ public class UpsertInventoryActivity extends AppCompatActivity {
         selectedCategory = categoryDropdown.getText().toString();
         if (isConsumeRequest) {
             if (validateFields(categoryDropdown.getText(), categoryInput) || validateFields(nameDropdown.getText(), nameInput)
-                    || validateFields(quantity.getText(), quantityInput))
+                    || validateFields(quantityTypeDropdown.getText(), quantityTypeInput) || validateFields(quantity.getText(), quantityInput))
                 return false;
             Double factor = Utilities.getQuantityType(categoryMap.get(selectedCategory), articlesMap.get(selectedArticle))
                     .getWeightMap().get(quantityTypeDropdown.getText().toString());
@@ -115,6 +115,8 @@ public class UpsertInventoryActivity extends AppCompatActivity {
                 quantityInput.setError("Available quantity is only " + availableQuantity + availableQuantityType);
                 return false;
             }
+            if (factor * Double.parseDouble(quantity.getText().toString()) == availableQuantity)
+                isOOS = true;
             InventoryDto dto = buildDto(inventoryId);
             daoService.updateInventory(dto);
         } else {
@@ -173,8 +175,7 @@ public class UpsertInventoryActivity extends AppCompatActivity {
         if (inventoryId != null && inventoryId != 0) {
             dto.setId(inventoryId);
         }
-        String quantityString = quantity.getText().toString();
-        dto.setQuantity(Double.parseDouble(quantityString));
+        dto.setQuantity(Double.parseDouble(quantity.getText().toString()));
         dto.setQuantityType(Utilities.getQuantityType(categoryMap.get(selectedCategory), articlesMap.get(selectedArticle)));
         dto.setQuantityTypeName(quantityTypeDropdown.getText().toString());
         dto.setPrice(Integer.parseInt(price.getText().toString()));
@@ -187,10 +188,9 @@ public class UpsertInventoryActivity extends AppCompatActivity {
     private InventoryDto buildDto(Integer inventoryId) {
         InventoryDto dto = new InventoryDto();
         dto.setId(inventoryId);
-        String quantityString = quantity.getText().toString();
         dto.setQuantityType(Utilities.getQuantityType(categoryMap.get(selectedCategory), articlesMap.get(selectedArticle)));
         dto.setQuantityTypeName(quantityTypeDropdown.getText().toString());
-        dto.setQuantity(Double.parseDouble(quantityString));
+        dto.setQuantity(Double.parseDouble(quantity.getText().toString()));
         return dto;
     }
 
@@ -229,6 +229,7 @@ public class UpsertInventoryActivity extends AppCompatActivity {
             nameDropdown.setText(inventory.getInventory().getName(), false);
             categoryDropdown.setInputType(0);
             nameDropdown.setInputType(0);
+            description.setText(inventory.getInventory().getDescription());
             selectedCategory = inventory.getCategory().getName();
             selectedArticle = inventory.getInventory().getName();
             categoryMap = new TreeMap<String, CategoryEntity>(String.CASE_INSENSITIVE_ORDER) {{
@@ -247,6 +248,7 @@ public class UpsertInventoryActivity extends AppCompatActivity {
             final AggregatedInventory inventory = daoService.getInventoryById(inventoryId);
             categoryDropdown.setText(inventory.getCategory().getName(), false);
             nameDropdown.setText(inventory.getInventory().getName(), false);
+            description.setText(inventory.getInventory().getDescription());
             categoryDropdown.setInputType(0);
             nameDropdown.setInputType(0);
             selectedCategory = inventory.getCategory().getName();
@@ -354,6 +356,10 @@ public class UpsertInventoryActivity extends AppCompatActivity {
     private void finishActivity(final String message) {
         Intent intent = new Intent();
         intent.putExtra("message", message);
+        if (isOOS) {
+            intent.putExtra("isOOS", true);
+            intent.putExtra("isOOSName", selectedArticle);
+        }
         setResult(RESULT_OK, intent);
         finish();
     }

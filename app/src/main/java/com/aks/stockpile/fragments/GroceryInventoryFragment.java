@@ -83,7 +83,7 @@ public class GroceryInventoryFragment extends Fragment {
                         .setPositiveButton(R.string.sort, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
+                                initializeRecyclerView(SortOption.ofName(SortOption.getValues()[selectedValue[0]]));
                             }
                         })
                         .setSingleChoiceItems(choices, selectedValue[0], new DialogInterface.OnClickListener() {
@@ -109,14 +109,13 @@ public class GroceryInventoryFragment extends Fragment {
 
     public void initializeRecyclerView(SortOption sortOption) {
         List<GroceryDetailsDto> data = getData(sortOption);
-        if (data.size() > 0) {
-            showSnackbar = false;
-            GroceryDetailsAdapter groceryDetailsAdapter = new GroceryDetailsAdapter(getContext(), data, daoService);
-            recyclerView.setAdapter(groceryDetailsAdapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        } else {
+        showSnackbar = false;
+        GroceryDetailsAdapter groceryDetailsAdapter = new GroceryDetailsAdapter(getContext(), data, daoService);
+        recyclerView.setAdapter(groceryDetailsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        if (data.isEmpty()) {
             showSnackbar = true;
-            snackbar = Utilities.makeSnackbarInfinite(getContext(), frameLayout, "No Grocery available! Try adding some from the add button above.");
+            snackbar = Utilities.makeSnackbar(getContext(), frameLayout, "No Grocery available! Try adding some from the add button above.", Snackbar.LENGTH_INDEFINITE);
             snackbar.setAction("Ok", new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

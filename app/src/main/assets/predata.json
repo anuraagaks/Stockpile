@@ -1327,7 +1327,7 @@
     },
     {
       "id": 175,
-      "name": "Cottage Cheese(Paneer)",
+      "name": "Cottage Cheese (Paneer)",
       "categoryId": 5,
       "thresholdPercentage": 40,
       "quantityType": "WEIGHT_KG"

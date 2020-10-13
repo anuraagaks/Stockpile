@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shopping_main_card"
+    style="@style/CardView.NonClickable"
+    >
+
+    <com.google.android.material.circularreveal.CircularRevealLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <com.google.android.material.circularreveal.CircularRevealLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/shopping_image"
+                style="@style/ImageView.FixedWidth"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="140dp"
+                android:layout_gravity="start"
+                android:src="@drawable/grains"
+                />
+
+            <com.google.android.material.circularreveal.CircularRevealLinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/shopping_category"
+                    style="@style/TextView.SubText"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:text="Vegetables"
+                    />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/shopping_name"
+                    style="@style/TextView.TitleText"
+                    android:layout_marginStart="5dp"
+                    android:layout_gravity="center"
+                    android:text="Tomatoes"
+                    />
+
+            </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+        </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+        <com.google.android.material.circularreveal.CircularRevealLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:layout_marginTop="10dp"
+            >
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/shopping_quantity_text"
+                style="@style/TextView.SubText"
+                android:layout_width="0dp"
+                android:layout_weight="65"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Available Quantity"
+                android:textStyle="bold"
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_height="match_parent"
+                android:background="@color/divider"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/shopping_quantity"
+                style="@style/TextView.SubText"
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:layout_weight="30"
+                android:layout_gravity="center"
+                android:layout_below="@id/shopping_quantity"
+                android:layout_marginStart="10dp"
+                android:text="2 Kg(s)"
+                />
+
+        </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+        <com.google.android.material.circularreveal.CircularRevealLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:layout_marginBottom="8dp"
+            >
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/shopping_source_title"
+                style="@style/TextView.SubText"
+                android:layout_width="0dp"
+                android:layout_weight="65"
+                android:layout_below="@id/shopping_quantity"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:text="Recommended source for purchase"
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_height="match_parent"
+                android:background="@color/divider"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/shopping_source"
+                style="@style/TextView.SubText"
+                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:layout_weight="30"
+                android:layout_gravity="center"
+                android:layout_below="@id/shopping_quantity"
+                android:layout_marginStart="10dp"
+                android:text="Big Basket"
+                />
+
+        </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+        <com.google.android.material.circularreveal.CircularRevealLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:weightSum="20"
+            >
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/shopping_delete"
+                style="@style/Button.Icon"
+                android:layout_toEndOf="@id/grocery_details_consume"
+                android:layout_width="0dp"
+                android:layout_weight="12"
+                android:layout_height="wrap_content"
+                app:iconGravity="start"
+                android:textSize="13sp"
+                app:iconSize="25dp"
+                app:iconPadding="0dp"
+                app:icon="@drawable/delete"
+                app:iconTint="@color/item_on_primary"
+                android:text="Remove from Cart"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/shopping_purchased"
+                style="@style/Button.Icon"
+                android:layout_width="0dp"
+                android:layout_weight="8"
+                android:layout_height="wrap_content"
+                app:iconGravity="start"
+                app:icon="@drawable/purchased"
+                app:iconTint="@color/item_on_primary"
+                android:textSize="13sp"
+                app:iconPadding="0dp"
+                app:iconSize="25dp"
+                android:layout_marginStart="5dp"
+                android:text="Purchased"
+                />
+
+        </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+    </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -13,17 +13,19 @@
         <TextView
             android:id="@+id/expenditure_rv_title"
             style="@style/TextView.TitleText"
-            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
             android:layout_toEndOf="@id/expenditure_image"
             android:text="Vegetables"
-            android:textSize="15sp"
+            android:textSize="17sp"
             />
 
         <TextView
             android:id="@+id/expenditure_rv_total"
             style="@style/TextView.SubText"
             android:layout_below="@id/expenditure_rv_title"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/expenditure_image"
             android:text="Total Spent: ₹1200"
             android:textSize="15sp"
@@ -33,19 +35,10 @@
             android:id="@+id/expenditure_rv_month"
             style="@style/TextView.SubText"
             android:layout_below="@id/expenditure_rv_total"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/expenditure_image"
             android:text="Monthly average: ₹340"
-            android:textSize="15sp"
-            />
-
-        <TextView
-            android:id="@+id/expenditure_rv_week"
-            style="@style/TextView.SubText"
-            android:layout_below="@id/expenditure_rv_month"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@id/expenditure_image"
-            android:text="Weekly Average: ₹70"
             android:textSize="15sp"
             />
 
@@ -53,9 +46,20 @@
             android:id="@+id/expenditure_rv_breakdown_btn"
             style="@style/Button"
             android:layout_width="wrap_content"
-            android:layout_below="@id/expenditure_rv_week"
+            android:layout_below="@id/expenditure_image"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
             android:text="Monthly Splitup"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/expenditure_rv_history_btn"
+            style="@style/Button"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/expenditure_image"
+            android:layout_marginTop="10dp"
+            android:layout_toStartOf="@id/expenditure_rv_breakdown_btn"
+            android:text="Purchase History"
             />
 
         <com.google.android.material.imageview.ShapeableImageView

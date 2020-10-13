@@ -28,4 +28,5 @@
     <string name="confirm_untrack">Are you sure?</string>
     <string name="positive_untrack">Yes</string>
     <string name="negetive_untrack">No</string>
+    <string name="shopping_bag">Shopping Bag</string>
 </resources>

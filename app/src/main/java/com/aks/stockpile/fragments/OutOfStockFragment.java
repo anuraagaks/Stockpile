@@ -1,5 +1,6 @@
 package com.aks.stockpile.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,11 @@ import com.aks.stockpile.services.StockpileDaoService;
 import com.aks.stockpile.utils.Utilities;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class OutOfStockFragment extends Fragment {
 
@@ -51,14 +56,21 @@ public class OutOfStockFragment extends Fragment {
 
     public void initializeRecyclerView() {
         List<GroceryDetailsDto> data = daoService.getOutOfStock();
-        if (data.size() > 0) {
-            showSnackbar = false;
-            GroceryDetailsAdapter groceryDetailsAdapter = new GroceryDetailsAdapter(getContext(), data, ((GroceryActivity) getActivity()).daoService);
-            recyclerView.setAdapter(groceryDetailsAdapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        } else {
+        SharedPreferences sp = getActivity().getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        Set<String> ids = new HashSet<>(sp.getStringSet("Shopping_cart", new HashSet<String>()));
+        SharedPreferences.Editor editor = sp.edit();
+        for (GroceryDetailsDto datum : data) {
+            ids.add(datum.getId().toString());
+        }
+        editor.putStringSet("Shopping_cart", ids);
+        editor.apply();
+        showSnackbar = false;
+        GroceryDetailsAdapter groceryDetailsAdapter = new GroceryDetailsAdapter(getContext(), data, ((GroceryActivity) getActivity()).daoService);
+        recyclerView.setAdapter(groceryDetailsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        if (data.isEmpty()) {
             showSnackbar = true;
-            snackbar = Utilities.makeSnackbarInfinite(getContext(), frameLayout, "Great! No grocery is out if stock. Keep going...");
+            snackbar = Utilities.makeSnackbar(getContext(), frameLayout, "Great! No grocery is out if stock. Keep going...", Snackbar.LENGTH_INDEFINITE);
             snackbar.setAction("Ok", new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

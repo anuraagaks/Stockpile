@@ -1,5 +1,7 @@
 package com.aks.stockpile.activities;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +19,7 @@ import com.aks.stockpile.R;
 import com.aks.stockpile.adapters.GroceryDetailsAdapter;
 import com.aks.stockpile.models.dtos.GroceryDetailsDto;
 import com.aks.stockpile.models.entities.CategoryEntity;
+import com.aks.stockpile.services.IGroceryRefresher;
 import com.aks.stockpile.services.StockpileDaoService;
 import com.aks.stockpile.services.impl.StockpileDaoServiceImpl;
 import com.aks.stockpile.utils.Utilities;
@@ -26,7 +29,7 @@ import java.util.List;
 
 import static com.aks.stockpile.constants.IntentExtrasConstants.GROCERY_CATEGORY_ACTIVITY_CATEGORY;
 
-public class GroceryCategoryActivity extends AppCompatActivity {
+public class GroceryCategoryActivity extends AppCompatActivity implements IGroceryRefresher {
 
     private Toolbar toolbar;
     private Integer categoryId;
@@ -51,13 +54,12 @@ public class GroceryCategoryActivity extends AppCompatActivity {
 
     private void initializeRecyclerView() {
         List<GroceryDetailsDto> data = daoService.getInventoryByCategory(categoryId);
-        if (data.size() > 0) {
-            GroceryDetailsAdapter groceryDetailsAdapter = new GroceryDetailsAdapter(this, data, daoService);
-            recyclerView.setAdapter(groceryDetailsAdapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        } else {
-            final Snackbar snackbar = Utilities.makeSnackbarInfinite(this, drawerLayout,
-                    String.format("No Grocery available in %s! Try adding some from the add button in previous screen.", categoryEntity.getName()));
+        GroceryDetailsAdapter groceryDetailsAdapter = new GroceryDetailsAdapter(this, data, daoService);
+        recyclerView.setAdapter(groceryDetailsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        if (data.isEmpty()) {
+            final Snackbar snackbar = Utilities.makeSnackbar(this, drawerLayout,
+                    String.format("No Grocery available in %s! Try adding some from the add button in previous screen.", categoryEntity.getName()), Snackbar.LENGTH_INDEFINITE);
             ((TextView) snackbar.getView().findViewById(R.id.snackbar_text)).setMaxLines(4);
             snackbar.setAction("Ok", new View.OnClickListener() {
                 @Override
@@ -74,8 +76,14 @@ public class GroceryCategoryActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == 112) {
             String message = data.getStringExtra("message");
             if (message != null && !message.equals("")) {
-                Utilities.makeSnackbar(this, drawerLayout, message)
+                Utilities.makeSnackbar(this, drawerLayout, message, Snackbar.LENGTH_LONG)
                         .show();
+            }
+            String isOOSName = data.getStringExtra("isOOSName");
+            boolean isOOS = data.getBooleanExtra("isOOS", false);
+            if (isOOS && isOOSName != null) {
+                Utilities.sendNotification(this, (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE),
+                        isOOSName + " is out of stock", isOOSName + " is out of stock now, it was added to the shopping bag. Click here for shopping bag.", "Out of Stock");
             }
         }
     }
@@ -94,6 +102,7 @@ public class GroceryCategoryActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        initializeRecyclerView();
     }
 
     private void setLayoutFields() {
@@ -118,5 +127,10 @@ public class GroceryCategoryActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void refreshRecycler() {
+        initializeRecyclerView();
     }
 }

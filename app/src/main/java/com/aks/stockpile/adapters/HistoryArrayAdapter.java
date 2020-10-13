@@ -19,14 +19,15 @@ import static android.content.Context.MODE_PRIVATE;
 public class HistoryArrayAdapter extends ArrayAdapter<AggregatedExpenditure> {
 
     public static final Integer ADD_IMAGE = R.drawable.add_inventroy;
-    public static final Integer REDUCE_IMAGE = R.drawable.consumes;
+    public static final Integer REDUCE_IMAGE = R.drawable.remove_inventory;
     private Context mContext;
-    private List<AggregatedExpenditure> histories;
+    private boolean showName;
 
-    public HistoryArrayAdapter(Context context, List<AggregatedExpenditure> histories) {
+    public HistoryArrayAdapter(Context context, List<AggregatedExpenditure> histories,
+                               boolean showName) {
         super(context, 0, histories);
         this.mContext = context;
-        this.histories = histories;
+        this.showName = showName;
     }
 
     @Override
@@ -38,6 +39,12 @@ public class HistoryArrayAdapter extends ArrayAdapter<AggregatedExpenditure> {
         ImageView icon = convertView.findViewById(R.id.history_icon);
         TextView timestamp = convertView.findViewById(R.id.history_timestamp);
         TextView text = convertView.findViewById(R.id.history_text);
+        TextView name = convertView.findViewById(R.id.history_name);
+        if (showName) {
+            name.setText(expenditure.getInventory().getName());
+        } else {
+            name.setVisibility(View.GONE);
+        }
         String endText = null;
         switch (expenditure.getExpenditure().getUpdateType()) {
             case ADDED:

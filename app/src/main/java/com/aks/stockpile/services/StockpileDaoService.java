@@ -44,6 +44,8 @@ public interface StockpileDaoService {
 
     List<AggregatedExpenditure> getExpenditureByInventoryId(Integer inventoryId);
 
+    List<AggregatedExpenditure> getExpenditureByCategoryId(Integer inventoryId);
+
     List<AggregatedExpenditure> getAllExpenditure();
 
     List<ArticleEntity> searchArticle(String name);
@@ -59,4 +61,6 @@ public interface StockpileDaoService {
     List<GroceryDetailsDto> getAllInventoryQuantityLH();
 
     Integer saveArticle(ArticleEntity buildArticle);
+
+    List<AggregatedInventory> findInventoryIn(List<Integer> shoppingIds);
 }

@@ -3,13 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/shopping_cart"
-        android:icon="@drawable/shopping_bag"
-        android:iconTint="@color/item_on_primary"
-        android:title="@string/app_bar_shopping_cart"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/app_bar_bell_notif"
         android:icon="@drawable/notification"
         android:iconTint="@color/item_on_primary"
